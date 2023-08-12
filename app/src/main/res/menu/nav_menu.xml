@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+ <item
+     android:id="@+id/homeFragment"
+     android:icon="@drawable/mainpage_icon"
+     android:title="홈" />
+ <item
+     android:id="@+id/exchangeFragment"
+     android:icon="@drawable/exchange_icon"
+     android:title="교환" />
+ <item
+     android:id="@+id/giftFragment"
+     android:icon="@drawable/gift_icon"
+     android:title="선물" />
+ <item
+     android:id="@+id/mypageFragment"
+     android:icon="@drawable/mypage_icon"
+     android:title="내정보" />
+</menu>
