@@ -10,4 +10,9 @@
     <color name="gray">#D9D9D9</color>
     <color name="Bolddgray">#847F7F</color>
     <color name="blackblue">#081E5C</color>
+    <color name="main_blue">#0F38A9</color>
+    <color name="light_blue">#94B0FF</color>
+    <color name="main_gray">#7C7C7C</color>
+    <color name="main_gray_light">#D5D5D5</color>
+    <color name="pressded_blue">#011243</color>
 </resources>
