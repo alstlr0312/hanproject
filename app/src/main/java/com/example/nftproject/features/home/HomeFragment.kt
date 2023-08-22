@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -23,6 +24,7 @@ class HomeFragment : Fragment() {
     lateinit var homeAdapter: HomeFraAdapter
     private val datas = arrayListOf<homeData>()
     val filterdatas = mutableListOf<homeData>()
+    private lateinit var listener: AdapterView.OnItemSelectedListener
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -50,21 +52,29 @@ class HomeFragment : Fragment() {
                 add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
                 add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
             }
-            layoutManager = GridLayoutManager(requireContext(),2)
+            layoutManager = GridLayoutManager(requireContext(), 2)
             setHasFixedSize(true)
+
             homeAdapter.datas = datas
-            homeAdapter.notifyDataSetChanged()
+            homeAdapter.setOnItemClickListener(object : HomeFraAdapter.OnItemClickListener {
+                override fun onItemClick(v:View, data: homeData, pos : Int) {
+                    val bundle = Bundle()
+                    bundle.putParcelable("data", data)
+                    val fragment = HomeDetailFragment()
+                    fragment.arguments = bundle
+
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.homeFrame, fragment)
+                        .addToBackStack(null)
+                        .commit()
+                }
+            })
+
+
             binding.rvPostList.adapter = homeAdapter
         }
-
-        homeAdapter.setOnItemClickListener(object : HomeFraAdapter.OnItemClickListener{
-            override fun onItemClick(v: View, data: homeData, pos : Int) {
-               Log.d(TAG,"zmfflr")
-            }
-
-        })
-
     }
+
     private fun searchMovie() {
         binding.searchtext.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -96,4 +106,8 @@ class HomeFragment : Fragment() {
         })
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
