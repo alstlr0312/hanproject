@@ -16,7 +16,6 @@ import java.util.regex.Pattern
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     //private val viewModel by viewModels<SignUpViewModel>()
-
     val emailPattern = android.util.Patterns.EMAIL_ADDRESS
     val pwPattern = Pattern.compile("^(?=.*([a-z].*[A-Z])|([A-Z].*[a-z]))(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{8,20}\$")
     val checkArr = arrayListOf(false, false, false, false)
