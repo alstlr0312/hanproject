@@ -3,11 +3,10 @@ package com.example.nftproject.features.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.commit
 import com.example.nftproject.R
 import com.example.nftproject.databinding.ActivityLoginBinding
 import com.example.nftproject.features.MainActivity
-import com.example.nftproject.features.home.HomeFragment
+import com.example.nftproject.features.signup.SignUpFragment
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -18,6 +17,15 @@ class LoginActivity : AppCompatActivity() {
         setContentView(view)
         val intent = Intent(this, MainActivity::class.java)
         binding.loginBtn.setOnClickListener{startActivity(intent)}
+
+        val button = binding.makeaccountBtn
+        button.setOnClickListener{
+            val fragment1 = SignUpFragment()
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.framelayout, fragment1)
+                .commit()
+        }
 
     }
 }

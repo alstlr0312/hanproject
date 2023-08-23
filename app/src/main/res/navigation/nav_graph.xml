@@ -34,4 +34,21 @@
         android:name="com.example.nftproject.features.home.HomeDetailFragment"
         android:label="fragment_home_detail"
         tools:layout="@layout/fragment_home_detail" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.nftproject.features.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_signUpFragment2"
+            app:destination="@id/signUpFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment2"
+        android:name="com.example.nftproject.features.signup.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
