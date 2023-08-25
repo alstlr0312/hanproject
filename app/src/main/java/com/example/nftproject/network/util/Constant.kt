@@ -1,7 +1,5 @@
 package com.example.nftproject.network.util
 
-import android.os.Environment
-
 
 // SharedPreferences
 const val SPFileName = "NFT"

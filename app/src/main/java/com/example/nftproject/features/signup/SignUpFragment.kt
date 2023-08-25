@@ -46,7 +46,7 @@ class SignUpFragment : Fragment() {
 
     private fun setUiEvent() {
         binding.btnEmailAuthenticate.setOnClickListener {
-          //  viewModel.check(binding.edtEmail.text.toString())
+            viewModel.check(binding.edtEmail.text.toString())
         }
 
         binding.btnSignUp.setOnClickListener {
@@ -60,7 +60,6 @@ class SignUpFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
         }
 
         binding.layoutMain.setOnClickListener {
@@ -188,7 +187,6 @@ class SignUpFragment : Fragment() {
                 binding.edtAuthenticateCode.setText("")
                 return@observe
             }
-            findNavController().popBackStack()
         }
     }
 }

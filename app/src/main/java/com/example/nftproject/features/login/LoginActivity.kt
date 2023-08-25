@@ -51,7 +51,11 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
         val intent = Intent(this, MainActivity::class.java)
         binding.kakaoBtn.setOnClickListener { startActivity(intent) }
         //사업자 로그인
-        binding.loginBtn.setOnClickListener { startActivity(intent) }
+        binding.loginBtn.setOnClickListener {
+            val id = binding.idText.text.toString()
+            val password = binding.pwText.text.toString()
+            viewModel.login(id, password)
+        }
         //회원가입
         val button = binding.makeaccountBtn
         button.setOnClickListener {

@@ -12,7 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val baseUrl = "https://3.36.109.82:8080/"
+private const val baseUrl = "http://3.36.109.82:8080/"
 
 object RetrofitClient{
 
