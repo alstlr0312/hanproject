@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentSignUpBinding
 import com.example.nftproject.network.util.LoadingDialog
 import com.example.nftproject.network.util.hideKeyboard
@@ -15,7 +18,7 @@ import java.util.regex.Pattern
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
-    //private val viewModel by viewModels<SignUpViewModel>()
+    private val viewModel by viewModels<SignUpViewModel>()
     val emailPattern = android.util.Patterns.EMAIL_ADDRESS
     val pwPattern = Pattern.compile("^(?=.*([a-z].*[A-Z])|([A-Z].*[a-z]))(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{8,20}\$")
     val checkArr = arrayListOf(false, false, false, false)
@@ -36,7 +39,7 @@ class SignUpFragment : Fragment() {
 
         dialog = LoadingDialog(requireContext())
 
-        //subscribeUI()
+        subscribeUI()
 
         setUiEvent()
     }
@@ -49,12 +52,11 @@ class SignUpFragment : Fragment() {
         binding.btnSignUp.setOnClickListener {
             val id = binding.edtId.text.toString()
             val pw = binding.edtPassword.text.toString()
-            val pwCheck = binding.edtPasswordConfirm.text.toString()
             val name = binding.edtUsername.text.toString()
             val email = binding.edtEmail.text.toString()
             val code = binding.edtAuthenticateCode.text.toString()
 
-   //         viewModel.signup(id, pw, pwCheck, email, name, field, code)
+            viewModel.signup(id, pw, email, name, code)
         }
 
         binding.btnBack.setOnClickListener {
@@ -160,7 +162,7 @@ class SignUpFragment : Fragment() {
         })
     }
 
-    /*private fun subscribeUI() {
+    private fun subscribeUI() {
         viewModel.toastMessage.observe(viewLifecycleOwner) { message ->
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
@@ -188,5 +190,5 @@ class SignUpFragment : Fragment() {
             }
             findNavController().popBackStack()
         }
-    }*/
+    }
 }

@@ -4,38 +4,27 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import com.example.nftproject.R
 import com.example.nftproject.databinding.ActivityLoginBinding
 import com.example.nftproject.features.MainActivity
 import com.example.nftproject.features.signup.SignUpFragment
+import com.unity.mynativeapp.config.DialogActivity
 
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
+class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
+    private val viewModel by viewModels<LoginViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        // 기본적으로 RadioButton2를 선택하고 초기 상태 설정
         binding.radioGroup.check(R.id.directlogin_btn)
 
-        // 각 버튼의 활성화 상태를 변경하는 함수 호출
+        //라디오 버튼 활성화 호출
         handleRadioButtonSelection()
 
-        // RadioGroup의 변화를 감지하고 각 버튼의 활성화 상태를 변경합니다.
-        binding.radioGroup.setOnCheckedChangeListener { _, _ ->
-            handleRadioButtonSelection()
-        }
-
-        val intent = Intent(this, MainActivity::class.java)
-        binding.kakaoBtn.setOnClickListener { startActivity(intent) }
-
-        val button = binding.makeaccountBtn
-        button.setOnClickListener {
-            val fragment1 = SignUpFragment()
-            supportFragmentManager.beginTransaction().add(R.id.framelayout, fragment1).commit()
-        }
+        setUiEvent()
+        subscribeUI()
     }
 
     private fun handleRadioButtonSelection() {
@@ -52,4 +41,43 @@ class LoginActivity : AppCompatActivity() {
         binding.tvFindId.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
         binding.tvFindPw.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
     }
+
+    private fun setUiEvent() {
+        binding.radioGroup.setOnCheckedChangeListener { _, _ ->
+            handleRadioButtonSelection()
+        }
+
+        //카카오 로그인
+        val intent = Intent(this, MainActivity::class.java)
+        binding.kakaoBtn.setOnClickListener { startActivity(intent) }
+        //사업자 로그인
+        binding.loginBtn.setOnClickListener { startActivity(intent) }
+        //회원가입
+        val button = binding.makeaccountBtn
+        button.setOnClickListener {
+            val fragment1 = SignUpFragment()
+            supportFragmentManager.beginTransaction().add(R.id.framelayout, fragment1).commit()
+        }
+
+
+
+    }
+
+    private fun subscribeUI() {
+        viewModel.toastMessage.observe(this) { message ->
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.loading.observe(this) { isLoading ->
+            if (isLoading) showLoadingDialog(this) else dismissLoadingDialog()
+        }
+
+        viewModel.loginSuccess.observe(this) { isSuccess ->
+            if (!isSuccess) return@observe
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+    }
+
+
 }

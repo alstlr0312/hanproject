@@ -18,4 +18,5 @@
     <string name="find_pw">비밀번호 찾기</string>
     <string name="option_2">Option 2</string>
     <string name="option_1">Option 1</string>
+    <string name="please_input_email_code">이메일 코드를 입력해주세요</string>
 </resources>
