@@ -42,15 +42,15 @@ class HomeFragment : Fragment() {
         homeAdapter = HomeFraAdapter(requireContext())
         binding.rvPostList.apply {
             datas.apply {
-                add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.gift_icon, name = "massry"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "massry"))
                 add(homeData(movieImage = R.drawable.ic_arrow_left, name = "marydf"))
                 add(homeData(movieImage = R.drawable.img_logo, name = "mar334y"))
-                add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.exchange_icon, name = "mary"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
+                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
             }
             layoutManager = GridLayoutManager(requireContext(), 2)
             setHasFixedSize(true)

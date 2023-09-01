@@ -3,16 +3,20 @@
 
  <item
      android:id="@+id/homeFragment"
-     android:icon="@drawable/mainpage_icon"
-     android:title="홈" />
+     android:icon="@drawable/home_icon"
+     android:title="@string/menu_home" />
  <item
      android:id="@+id/exchangeFragment"
-     android:icon="@drawable/exchange_icon"
-     android:title="교환" />
+     android:icon="@drawable/change_icon"
+     android:title="@string/menu_chagne" />
  <item
      android:id="@+id/giftFragment"
-     android:icon="@drawable/gift_icon"
-     android:title="선물" />
+     android:icon="@drawable/present_icon"
+     android:title="@string/menu_gift" />
+ <item
+     android:id="@+id/boardFragment"
+     android:icon="@drawable/board_icon"
+     android:title="게시글" />
  <item
      android:id="@+id/mypageFragment"
      android:icon="@drawable/mypage_icon"

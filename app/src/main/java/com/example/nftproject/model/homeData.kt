@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 
-class homeData(var name: String? = null, var movieImage: Int ) : Parcelable {
+data class homeData(var name: String? = null, var movieImage: Int ) : Parcelable {
     val TAG: String = "로그"
 
     constructor(parcel: Parcel) : this(

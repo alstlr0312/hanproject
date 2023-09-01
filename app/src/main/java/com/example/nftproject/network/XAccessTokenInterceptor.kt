@@ -92,7 +92,6 @@ class XAccessTokenInterceptor : Interceptor {
 							if(data.data != null){
 								MyApplication.prefUtil.setString(X_ACCESS_TOKEN, data.data.accessToken)
 								MyApplication.prefUtil.setString(X_REFRESH_TOKEN, data.data.refreshToken)
-
 							}
 						}
 					}else{

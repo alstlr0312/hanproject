@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.nftproject.R
 import com.example.nftproject.databinding.ActivityMainBinding
+import com.example.nftproject.features.board.BoardFragment
 import com.example.nftproject.features.exchange.ExchangeFragment
 import com.example.nftproject.features.gift.GiftFragment
 import com.example.nftproject.features.home.HomeFragment
@@ -31,8 +32,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.homeFragment -> supportFragmentManager.beginTransaction().replace(R.id.main_frame, HomeFragment()).commit()
                 R.id.exchangeFragment -> supportFragmentManager.beginTransaction().replace(R.id.main_frame, ExchangeFragment()).commit()
                 R.id.giftFragment -> supportFragmentManager.beginTransaction().replace(R.id.main_frame, GiftFragment()).commit()
+                R.id.boardFragment -> supportFragmentManager.beginTransaction().replace(R.id.main_frame, BoardFragment()).commit()
                 R.id.mypageFragment -> supportFragmentManager.beginTransaction().replace(R.id.main_frame, MypageFragment()).commit()
-
             }
             true
         }

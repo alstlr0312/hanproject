@@ -1,6 +1,8 @@
 package com.example.nftproject.network
 
 import com.unity.mynativeapp.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -23,5 +25,13 @@ interface RetrofitService {
 		@Body signUpRequest: SignUpRequest
 	) : Call<MyResponse<String>>
 
+	//nft발행
+	@Multipart
+	@POST("/nft/save")
+	fun postDiaryWrite(
+		@Part("issueNFTReq") issueNFTReq: RequestBody,
+		@Part("countNFTReq") countNFTReq: RequestBody,
+		@Part imageFile: MutableList<MultipartBody.Part>
+	): Call<MyResponse<String>>
 
 }
