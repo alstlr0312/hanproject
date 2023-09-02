@@ -10,6 +10,7 @@ import com.example.nftproject.R
 import com.example.nftproject.databinding.ActivityLoginBinding
 import com.example.nftproject.features.MainActivity
 import com.example.nftproject.features.signup.SignUpFragment
+import com.example.nftproject.makerfeatures.MakerActivity
 import com.unity.mynativeapp.config.DialogActivity
 
 class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
@@ -78,7 +79,8 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
 
         viewModel.loginSuccess.observe(this) { isSuccess ->
             if (!isSuccess) return@observe
-            startActivity(Intent(this, MainActivity::class.java))
+          //  startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MakerActivity::class.java))
             finish()
         }
     }

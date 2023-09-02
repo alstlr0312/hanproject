@@ -28,10 +28,13 @@ interface RetrofitService {
 	//nft발행
 	@Multipart
 	@POST("/nft/save")
-	fun postDiaryWrite(
+	fun makenft(
 		@Part("issueNFTReq") issueNFTReq: RequestBody,
 		@Part("countNFTReq") countNFTReq: RequestBody,
-		@Part imageFile: MutableList<MultipartBody.Part>
+		@Part poster: MultipartBody.Part,
+		@Part normal: MultipartBody.Part,
+		@Part rare: MultipartBody.Part,
+		@Part legend: MultipartBody.Part
 	): Call<MyResponse<String>>
 
 }

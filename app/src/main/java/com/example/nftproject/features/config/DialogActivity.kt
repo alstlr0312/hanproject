@@ -14,7 +14,11 @@ import com.example.nftproject.network.util.LoadingDialog
 abstract class DialogActivity<B: ViewBinding>(private val inflate: (LayoutInflater) -> B):
     AppCompatActivity() {
     protected lateinit var binding: B
-        private set
+    companion object {
+        const val SHOW_LOADING = 0
+        const val SHOW_TEXT_LOADING = 1
+        const val DISMISS_LOADING = 2
+    }
     lateinit var loadingDialog: LoadingDialog
     lateinit var inputMethodManager: InputMethodManager
     var keyBoardIsShowing: Boolean = false

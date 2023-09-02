@@ -36,9 +36,7 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         dialog = LoadingDialog(requireContext())
-
         subscribeUI()
 
         setUiEvent()
@@ -166,9 +164,6 @@ class SignUpFragment : Fragment() {
             Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
         }
 
-        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            if (isLoading) dialog.show() else dialog.dismiss()
-        }
 
         viewModel.checkSuccess.observe(viewLifecycleOwner){ isSuccess ->
             if(!isSuccess) return@observe
