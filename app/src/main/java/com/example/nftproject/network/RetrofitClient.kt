@@ -34,6 +34,5 @@ object RetrofitClient{
 
     fun getApiService(): RetrofitService = retrofitService
 
-    fun getBaseUrl(): String = baseUrl
 }
 

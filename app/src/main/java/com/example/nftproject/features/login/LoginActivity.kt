@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.example.nftproject.MyApplication
 import com.example.nftproject.R
 import com.example.nftproject.databinding.ActivityLoginBinding
 import com.example.nftproject.features.MainActivity
@@ -23,9 +24,16 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
 
         //라디오 버튼 활성화 호출
         handleRadioButtonSelection()
-
+        setView()
         setUiEvent()
         subscribeUI()
+    }
+
+    private fun setView(){
+        val id = MyApplication.prefUtil.getString("id", null)
+        if(id!=null){
+            binding.idText.setText(id)
+        }
     }
 
     private fun handleRadioButtonSelection() {

@@ -19,6 +19,15 @@
             android:layout_height="match_parent">
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_mynftList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.347"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listsourcetxt" />
+
             <ImageView
                 android:id="@+id/listtxt"
                 android:layout_width="284dp"
@@ -26,7 +35,7 @@
                 android:src="@drawable/list_txt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bar" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/listsourcetxt"
@@ -37,27 +46,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/listtxt" />
 
-            <View
-                android:id="@+id/bar"
-                android:layout_width="wrap_content"
-                android:layout_height="5dp"
-                android:background="#6FACACAC"
-                android:backgroundTint="#C8DDDDDD"
-                app:layout_constraintBottom_toBottomOf="@+id/logo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/logo" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_mynftList"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.347"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/listsourcetxt">
-
-            </androidx.recyclerview.widget.RecyclerView>
 
             <ImageView
                 android:id="@+id/makenft_btn"
@@ -67,8 +55,21 @@
                 app:layout_constraintBottom_toTopOf="@+id/listsourcetxt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/listtxt"
-                app:layout_constraintTop_toBottomOf="@+id/bar" />
+                app:layout_constraintTop_toTopOf="@+id/listtxt" />
 
+            <TextView
+                android:id="@+id/emptyView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="게시글이 없습니다"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listsourcetxt" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

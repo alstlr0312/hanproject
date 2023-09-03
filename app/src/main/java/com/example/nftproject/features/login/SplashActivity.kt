@@ -11,23 +11,14 @@ import com.example.nftproject.features.MainActivity
 import com.example.nftproject.features.signup.SignUpFragment
 import com.example.nftproject.makerfeatures.MakerActivity
 import com.example.nftproject.network.util.X_ACCESS_TOKEN
+import com.example.nftproject.network.util.X_REFRESH_TOKEN
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         Handler(Looper.getMainLooper()).postDelayed({
-            checkLogin()}, 3000)
-      /*  Handler().postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(intent)
-
-        },DURATION)*/
-    }
-    companion object {
-        private const val DURATION : Long = 3000
-
+            checkLogin()}, 2000)
     }
     fun checkLogin(){
         val accessToken = MyApplication.prefUtil.getString(X_ACCESS_TOKEN, null)

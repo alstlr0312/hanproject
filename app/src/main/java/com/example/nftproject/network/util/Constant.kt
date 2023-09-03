@@ -1,10 +1,7 @@
 package com.example.nftproject.network.util
 
 
-// SharedPreferences
 const val SPFileName = "NFT"
-
-// Network
 const val AUTHORIZATION = "Authorization"
 const val REFRESH_TOKEN = "refreshToken"
 const val GRANT_TYPE = "Bearer"

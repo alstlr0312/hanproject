@@ -1,5 +1,7 @@
 package com.example.nftproject.network
 
+import com.example.nftproject.model.GetMyNftResponse
+import com.example.nftproject.model.NftMakeResponse
 import com.unity.mynativeapp.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -37,4 +39,12 @@ interface RetrofitService {
 		@Part legend: MultipartBody.Part
 	): Call<MyResponse<String>>
 
+	//게시글 목록 확인
+	@GET("/nft")
+	fun getmynft(
+		@Query("sortType") postType: String?,
+		@Query("publisherName") publisherName: String?,
+		@Query("page") page: Int?,
+		@Query("size") size: Int?
+	) : Call<MyResponse<GetMyNftResponse>>
 }

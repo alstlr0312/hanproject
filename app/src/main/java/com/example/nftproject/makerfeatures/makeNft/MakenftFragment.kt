@@ -1,4 +1,4 @@
-package com.example.nftproject.makerfeatures.mhome
+package com.example.nftproject.makerfeatures.makeNft
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -221,19 +221,6 @@ class MakenftFragment : Fragment() {
             val requestBodyString2 = gson2.toJson(jsonRequest2).toString()
             val publishnft2 = requestBodyString2.toRequestBody("application/json".toMediaType())
 
-          /*  if (posterFile != null ){
-                pimageFiles.add(createImagePart("poster", posterFile!!))
-            }
-            if(normalFile != null){
-                nimageFiles.add(createImagePart("normal", normalFile!!))
-            }
-            if(rareFile !=null){
-                rimageFiles.add(createImagePart("rare", rareFile!!))
-            }
-            if(legendFile != null){
-                limageFiles.add(createImagePart("legend", legendFile!!))
-            }
-*/
             val posterRequestBody = posterFile?.let { it1 -> RequestBody.create("image/jpeg".toMediaTypeOrNull(), it1) }
             val posterPart = posterRequestBody?.let { it1 -> MultipartBody.Part.createFormData("poster", posterFile?.name, it1) }
             val normalRequestBody = normalFile?.let { it1 -> RequestBody.create("image/jpeg".toMediaTypeOrNull(), it1) }

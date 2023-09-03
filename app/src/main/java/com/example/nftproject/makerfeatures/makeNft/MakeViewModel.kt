@@ -1,4 +1,4 @@
-package com.example.nftproject.makerfeatures.mhome
+package com.example.nftproject.makerfeatures.makeNft
 
 import android.content.ContentValues.TAG
 import android.util.Log
