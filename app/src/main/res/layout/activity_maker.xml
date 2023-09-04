@@ -7,7 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
+        <FrameLayout
+            android:id="@+id/MDetailframe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </FrameLayout>
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/nav_dir_bar"
             android:layout_width="match_parent"

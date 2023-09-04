@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentHomeDetailBinding
-import com.example.nftproject.model.homeData
+import com.example.nftproject.model.GetMovieResponse
+import com.example.nftproject.model.movieListItem
 
 
 class HomeDetailFragment : Fragment() {
@@ -19,12 +19,13 @@ class HomeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeDetailBinding.inflate(inflater, container, false)
-
-        val data = arguments?.getParcelable<homeData>("data")
-
-        data?.let {
-            Glide.with(this).load(it.movieImage).into(binding.mainImg)
-            binding.titleTxt.text = it.name
+        val postTitle = arguments?.getString("posttitle")
+        val postPosterUri = arguments?.getString("postp")
+        postTitle?.let {
+            binding.titleTxt.text = it
+        }
+        postPosterUri?.let{
+            Glide.with(this).load(it).into(binding.mainImg)
         }
 
         return binding.root

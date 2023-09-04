@@ -20,9 +20,10 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             checkLogin()}, 2000)
     }
+
     fun checkLogin(){
         val accessToken = MyApplication.prefUtil.getString(X_ACCESS_TOKEN, null)
-        val nextActivity = if (accessToken != null) MakerActivity::class.java else LoginActivity::class.java
+        val nextActivity = if (accessToken != null) LoginActivity::class.java else LoginActivity::class.java
         startActivity(Intent(this, nextActivity))
         finish()
     }

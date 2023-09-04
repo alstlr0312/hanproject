@@ -87,8 +87,8 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
 
         viewModel.loginSuccess.observe(this) { isSuccess ->
             if (!isSuccess) return@observe
-          //  startActivity(Intent(this, MainActivity::class.java))
-            startActivity(Intent(this, MakerActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
+            //startActivity(Intent(this, MakerActivity::class.java))
             finish()
         }
     }

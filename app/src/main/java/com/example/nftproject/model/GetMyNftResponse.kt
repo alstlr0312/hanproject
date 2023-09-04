@@ -13,7 +13,7 @@ data class nftListItem(
     @SerializedName("nftPrice") val nftPrice: Int,
     @SerializedName("nftCount") val nftCount: Int,
     @SerializedName("runningTime") val runningTime: Int,
-    @SerializedName("saleStartTime") val saleStartTime: String?,
-    @SerializedName("saleEndTime") val saleEndTime: String?,
+    @SerializedName("saleStartDate") val saleStartDate: String?,
+    @SerializedName("saleEndDate") val saleEndDate: String?,
 )
 

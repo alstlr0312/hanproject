@@ -10,14 +10,14 @@ import com.example.nftproject.model.nftListItem
 
 class MhomeAdaptor(private val context: Context) : RecyclerView.Adapter<MhomeAdaptor.ViewHolder>() {
     var itemList = mutableListOf<nftListItem>()
+    private var counter = 0
     inner class ViewHolder(val binding: MakerLsitRvBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(item: nftListItem){
-
-            // 게시글 종류
-            binding.nnumList.text = "1"
+            counter++
+            binding.nnumList.text = counter.toString()
             binding.ntitleList.text = item.movieTitle
             binding.ncostList.text = item.nftPrice.toString()
-            binding.ndayList.text = item.saleEndTime
+            binding.ndayList.text = item.saleEndDate.toString()
             binding.nsellList.text = item.nftCount.toString()
 
         }

@@ -13,19 +13,18 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nftproject.MyApplication
 import com.example.nftproject.R
+import com.example.nftproject.databinding.FragmentHomeBinding
 import com.example.nftproject.databinding.FragmentMhomeBinding
 import com.example.nftproject.makerfeatures.makeNft.MakenftFragment
 import com.example.nftproject.model.nftListItem
 import com.example.nftproject.network.util.LoadingDialog
 import com.example.nftproject.network.util.X_ACCESS_TOKEN
 import com.example.nftproject.network.util.X_REFRESH_TOKEN
+import com.unity.mynativeapp.config.DialogFragment
 import kotlin.math.log
 
-class MhomeFragment : Fragment() {
+class MhomeFragment: DialogFragment<FragmentMhomeBinding>(FragmentMhomeBinding::bind, R.layout.fragment_mhome)  {
 
-    lateinit var lodingDialog: LoadingDialog
-    private var _binding: FragmentMhomeBinding? = null
-    private val binding get() = _binding!!
     lateinit var homeAdapter: MhomeAdaptor
     private val viewModel by viewModels<MhomeViewModel>()
     private var getPostHasNext = false
@@ -33,14 +32,6 @@ class MhomeFragment : Fragment() {
     private var currentPage = 0
     private val pageSize = 20
     private lateinit var publisherName: String
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMhomeBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -69,34 +60,6 @@ class MhomeFragment : Fragment() {
 
     }
 
-    fun dismissLoadingDialog() {
-        if (lodingDialog.isShowing) {
-            lodingDialog.dismiss()
-        }
-    }
-
-
-    fun showLoadingDialog(context: Context) {
-        lodingDialog = LoadingDialog(context)
-        lodingDialog.show()
-    }
-
-    fun logout(){
-        MyApplication.prefUtil.removeKey(X_ACCESS_TOKEN)
-        MyApplication.prefUtil.removeKey(X_REFRESH_TOKEN)
-
-        val activity = requireActivity()
-        try {
-            val intent = Intent.makeRestartActivityTask(
-                activity.packageManager.getLaunchIntentForPackage(activity.packageName)?.component
-            )
-            activity.startActivity(intent)
-            activity.finishAffinity() // 현재 액티비티 및 백 스택의 모든 액티비티 종료
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
-
     private fun subscribeUI() {
         viewModel.toastMessage.observe(viewLifecycleOwner) { message ->
             Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
@@ -110,7 +73,6 @@ class MhomeFragment : Fragment() {
         }
 
         viewModel.myNftData.observe(viewLifecycleOwner) { data ->
-
             if (data != null) {
                 homeAdapter.removeAllItem()
 
@@ -131,11 +93,10 @@ class MhomeFragment : Fragment() {
                             nftPrice = pnft.nftPrice,
                             nftCount = pnft.nftCount,
                             runningTime = pnft.runningTime,
-                            saleStartTime = pnft.saleStartTime,
-                            saleEndTime = pnft.saleEndTime
+                            saleStartDate = pnft.saleStartDate,
+                            saleEndDate = pnft.saleEndDate
                         )
                     )
-                    Log.d("제목",pnft.movieTitle)
                 }
 
                 getPostHasNext = data.hasNext

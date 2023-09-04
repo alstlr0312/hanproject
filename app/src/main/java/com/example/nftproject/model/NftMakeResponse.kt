@@ -17,11 +17,10 @@ data class issueItem(
     @SerializedName("actors") val actors: String,
     @SerializedName("runningTime") val runningTime: Int,
     @SerializedName("normalNFTPrice") val normalNFTPrice: Int,
-    @SerializedName("saleStartTime") val saleStartTime: String,
-    @SerializedName("saleEndTime") val saleEndTime: String,
+    @SerializedName("saleStartDate") val saleStartDate: String,
+    @SerializedName("saleEndDate") val saleEndDate: String,
     @SerializedName("overView") val overView: String,
     @SerializedName("show") val show: Boolean,
-    @SerializedName("exerciseDate") val exerciseDate: String
 )
 
 data class countItem(

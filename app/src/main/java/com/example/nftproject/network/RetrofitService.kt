@@ -1,5 +1,6 @@
 package com.example.nftproject.network
 
+import com.example.nftproject.model.GetMovieResponse
 import com.example.nftproject.model.GetMyNftResponse
 import com.example.nftproject.model.NftMakeResponse
 import com.unity.mynativeapp.model.*
@@ -39,7 +40,7 @@ interface RetrofitService {
 		@Part legend: MultipartBody.Part
 	): Call<MyResponse<String>>
 
-	//게시글 목록 확인
+	//내가 발행한 nft 확인
 	@GET("/nft")
 	fun getmynft(
 		@Query("sortType") postType: String?,
@@ -47,4 +48,9 @@ interface RetrofitService {
 		@Query("page") page: Int?,
 		@Query("size") size: Int?
 	) : Call<MyResponse<GetMyNftResponse>>
+
+
+	//영화 목록 확인
+	@GET("/movie")
+	fun getmovie(): Call<MyResponse<GetMovieResponse>>
 }

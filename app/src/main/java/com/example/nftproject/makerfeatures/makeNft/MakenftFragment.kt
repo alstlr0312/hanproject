@@ -13,10 +13,13 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.nftproject.R
+import com.example.nftproject.databinding.FragmentHomeBinding
 import com.example.nftproject.databinding.FragmentMakenftBinding
 import com.example.nftproject.model.NftMakeRequest
 import com.example.nftproject.model.NftcountRequest
 import com.google.gson.GsonBuilder
+import com.unity.mynativeapp.config.DialogFragment
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -26,23 +29,18 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import java.util.*
 
-class MakenftFragment : Fragment() {
-    private lateinit var binding: FragmentMakenftBinding
+class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBinding::bind, R.layout.fragment_makenft)  {
+
     private val viewModel by viewModels<MakeViewModel>()
     private var posterFile: File? = null
     private var normalFile: File? = null
     private var rareFile: File? = null
     private var legendFile: File? = null
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentMakenftBinding.inflate(inflater, container, false)
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setUiEvent()
         setCalender()
         setImg()
-        return binding.root
     }
 
 
@@ -187,8 +185,8 @@ class MakenftFragment : Fragment() {
                 actors = actorArray.takeIf { it.isNotEmpty() },
                 runningTime = movietime.takeIf { it != null },
                 normalNFTPrice = normalprice.takeIf { it != null },
-                saleStartTime = selldate.takeIf { it !=" " },
-                saleEndTime = selleddate.takeIf { it !=" " },
+                saleStartDate = selldate.takeIf { it !=" " },
+                saleEndDate = selleddate.takeIf { it !=" " },
                 overView = overview.takeIf { it !=" " },
                 show = show
             )

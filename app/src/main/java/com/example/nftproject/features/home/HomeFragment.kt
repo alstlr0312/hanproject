@@ -1,78 +1,39 @@
 package com.example.nftproject.features.home
 
-import android.content.ContentValues.TAG
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.SearchView
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentHomeBinding
-import com.example.nftproject.model.homeData
+import com.example.nftproject.model.movieListItem
+import com.unity.mynativeapp.config.DialogFragment
 import java.util.*
 
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
-    lateinit var homeAdapter: HomeFraAdapter
-    private val datas = arrayListOf<homeData>()
-    val filterdatas = mutableListOf<homeData>()
-    private lateinit var listener: AdapterView.OnItemSelectedListener
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-        return binding.root
-    }
+class HomeFragment: DialogFragment<FragmentHomeBinding>(FragmentHomeBinding::bind, R.layout.fragment_home) {
+    lateinit var hAdapter: HomeFraAdapter
+    private val viewModel by viewModels<HomeViewModel>()
+    private var getPostIsFirst = true
+    private var getPostHasNext = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initRecycler()
+        setView()
+        subscribeUI()
         searchMovie()
     }
 
-    private fun initRecycler() {
-        homeAdapter = HomeFraAdapter(requireContext())
-        binding.rvPostList.apply {
-            datas.apply {
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "massry"))
-                add(homeData(movieImage = R.drawable.ic_arrow_left, name = "marydf"))
-                add(homeData(movieImage = R.drawable.img_logo, name = "mar334y"))
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
-                add(homeData(movieImage = R.drawable.mypage_icon, name = "mary"))
-            }
-            layoutManager = GridLayoutManager(requireContext(), 2)
-            setHasFixedSize(true)
-
-            homeAdapter.datas = datas
-            homeAdapter.setOnItemClickListener(object : HomeFraAdapter.OnItemClickListener {
-                override fun onItemClick(v:View, data: homeData, pos : Int) {
-                    val bundle = Bundle()
-                    bundle.putParcelable("data", data)
-                    val fragment = HomeDetailFragment()
-                    fragment.arguments = bundle
-
-                    requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.homeFrame, fragment)
-                        .addToBackStack(null)
-                        .commit()
-                }
-            })
-
-
-            binding.rvPostList.adapter = homeAdapter
-        }
+    private fun setView() {
+        hAdapter = HomeFraAdapter(requireContext())
+        binding.rvPostList.adapter = hAdapter
+        val  layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvPostList.layoutManager = layoutManager
+        viewModel.getMovie()
     }
 
     private fun searchMovie() {
@@ -87,27 +48,68 @@ class HomeFragment : Fragment() {
 
             override fun afterTextChanged(s: Editable) {
                 val searchText = s.toString().toLowerCase(Locale.getDefault())
-                filterdatas.clear()
-                if (searchText.isEmpty()) {
-                    filterdatas.addAll(datas)
+
+                hAdapter.itemList = if (searchText.isEmpty()) {
+                    viewModel.myMovieData.value?.movieListDtos?.toMutableList() ?: mutableListOf()
+                    // If the search text is empty, show all data
                 } else {
-                    datas.forEach { data ->
-                        val movieName = data.name?.toLowerCase(Locale.getDefault())
-                        if (movieName != null) {
-                            if (movieName.contains(searchText)) {
-                                filterdatas.add(data)
-                            }
-                        }
-                    }
+                    viewModel.myMovieData.value?.movieListDtos?.filter { data ->
+                        // Otherwise filter the data according to the search text
+                        val movieName = data.movieTitle?.toLowerCase(Locale.getDefault())
+                        movieName != null && movieName.contains(searchText)
+                    }?.toMutableList() ?: mutableListOf()
+                    // Convert the result of filter to a MutableList
                 }
-                homeAdapter.datas = filterdatas
-                homeAdapter.notifyDataSetChanged()
+
+                hAdapter.notifyDataSetChanged()
             }
         })
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+
+    private fun subscribeUI() {
+        viewModel.toastMessage.observe(viewLifecycleOwner) { message ->
+            Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) showLoadingDialog(requireContext()) else dismissLoadingDialog()
+        }
+        viewModel.logout.observe(this) {
+            if (it) logout()
+        }
+
+        viewModel.myMovieData.observe(viewLifecycleOwner) { data ->
+            Log.d("Check", "Data: $data")
+            Log.d("있음", "있음")
+            if (data != null) {
+                Log.d("Check", "nftListDto: ${data.movieListDtos}")
+                Log.d("있음", "있음")
+                if (data.movieListDtos != null) {
+                    hAdapter.removeAllItem()
+                    val getMovieInfo = data.movieListDtos
+                    if (getMovieInfo.isEmpty()) {
+                        binding.rvPostList.visibility = View.INVISIBLE
+                        binding.imageView6.visibility = View.VISIBLE
+                        Log.d("있음", "있음")
+                    } else {
+                        binding.rvPostList.visibility = View.VISIBLE
+                        binding.imageView6.visibility = View.INVISIBLE
+                        Log.d("있음", "있음")
+                    }
+                    for (pnft in getMovieInfo) {
+                        hAdapter.addItem(
+                            movieListItem(
+                                movieTitle = pnft.movieTitle,
+                                poster = pnft.poster
+                            )
+                        )
+                    }
+                    getPostHasNext = data.hasNext
+                    getPostIsFirst = data.isFirst
+                }
+            }
+        }
     }
 }
