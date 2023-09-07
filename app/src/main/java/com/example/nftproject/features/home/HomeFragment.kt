@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentHomeBinding
 import com.example.nftproject.model.movieListItem
@@ -74,7 +73,7 @@ class HomeFragment: DialogFragment<FragmentHomeBinding>(FragmentHomeBinding::bin
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            if (isLoading) showLoadingDialog(requireContext()) else dismissLoadingDialog()
+        //    if (isLoading) showLoadingDialog(requireContext()) else dismissLoadingDialog()
         }
         viewModel.logout.observe(this) {
             if (it) logout()
@@ -101,6 +100,7 @@ class HomeFragment: DialogFragment<FragmentHomeBinding>(FragmentHomeBinding::bin
                     for (pnft in getMovieInfo) {
                         hAdapter.addItem(
                             movieListItem(
+                                id = pnft.id,
                                 movieTitle = pnft.movieTitle,
                                 poster = pnft.poster
                             )

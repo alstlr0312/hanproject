@@ -27,8 +27,8 @@ class HomeFraAdapter(private val context: Context) : RecyclerView.Adapter<HomeFr
             binding.rvTitle.text = item.movieTitle
             binding.root.setOnClickListener {
                 val bundle = Bundle().apply {
-                    putString("posttitle", item.movieTitle)
                     putString("postp", item.poster)
+                    putString("Id",item.id.toString())
                 }
                 val fragment = HomeDetailFragment().apply { arguments = bundle }
                 (itemView.context as? AppCompatActivity)?.supportFragmentManager?.beginTransaction()

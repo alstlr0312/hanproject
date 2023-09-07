@@ -34,4 +34,6 @@
     <string name="input_movie_name">영화명을 입력해주세요</string>
     <string name="input_genere_txt">장르를 입력해주세요</string>
     <string name="input_age_txt">연령제한을 입력해주세요</string>
+    <string name="publisher">발행자</string>
+    <string name="movie_title">영화제목</string>
 </resources>

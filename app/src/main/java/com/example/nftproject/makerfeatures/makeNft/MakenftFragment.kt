@@ -27,6 +27,7 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBinding::bind, R.layout.fragment_makenft)  {
@@ -45,49 +46,59 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
 
 
     private fun setCalender(){
+        val calendar = Calendar.getInstance()
+        val currentTime = calendar.time
+        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val formattedDate = dateFormat.format(currentTime)
         binding.setCalender.setOnClickListener {
-            var calendar = Calendar.getInstance()
-            var year = calendar.get(Calendar.YEAR)
-            var month = calendar.get(Calendar.MONTH)
-            var dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
-            var listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-                binding.opendayText.setText("${i}-${i2 + 1}-${i3}")
+            val listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+                val formattedDate = String.format("%04d-%02d-%02d $formattedDate", i, i2 + 1, i3)
+                binding.opendayText.setText(formattedDate)
             }
-            var picker = context?.let { it1 -> DatePickerDialog(it1, listener, year, month, dayOfMonth) }
+
+            val picker = context?.let { it1 -> DatePickerDialog(it1, listener, year, month, dayOfMonth) }
 
             if (picker != null) {
                 picker.show()
             }
         }
         binding.sellCalender.setOnClickListener {
-            var sellcalendar = Calendar.getInstance()
-            var sellyear = sellcalendar.get(Calendar.YEAR)
-            var sellmonth = sellcalendar.get(Calendar.MONTH)
-            var selldayOfMonth = sellcalendar.get(Calendar.DAY_OF_MONTH)
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
-            var selllistener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-                binding.saleStartTimeText.setText("${i}-${i2 + 1}-${i3}")
+            val listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+                val formattedDate = String.format("%04d-%02d-%02d $formattedDate", i, i2 + 1, i3)
+                binding.saleStartTimeText.setText(formattedDate)
             }
-            var sellpicker = context?.let { it1 -> DatePickerDialog(it1, selllistener, sellyear, sellmonth, selldayOfMonth) }
 
-            if (sellpicker != null) {
-                sellpicker.show()
+            val picker = context?.let { it1 -> DatePickerDialog(it1, listener, year, month, dayOfMonth) }
+
+            if (picker != null) {
+                picker.show()
             }
         }
         binding.sellendCalender.setOnClickListener {
-            var secalendar = Calendar.getInstance()
-            var seyear = secalendar.get(Calendar.YEAR)
-            var semonth = secalendar.get(Calendar.MONTH)
-            var sedayOfMonth = secalendar.get(Calendar.DAY_OF_MONTH)
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
-            var selistener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-                binding.saleEndTimeText.setText("${i}-${i2 + 1}-${i3}")
+            val listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
+                val formattedDate = String.format("%04d-%02d-%02d $formattedDate", i, i2 + 1, i3)
+                binding.saleEndTimeText.setText(formattedDate)
             }
-            var sepicker = context?.let { it1 -> DatePickerDialog(it1, selistener, seyear, semonth, sedayOfMonth) }
 
-            if (sepicker != null) {
-                sepicker.show()
+            val picker = context?.let { it1 -> DatePickerDialog(it1, listener, year, month, dayOfMonth) }
+
+            if (picker != null) {
+                picker.show()
             }
         }
     }
@@ -185,8 +196,8 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
                 actors = actorArray.takeIf { it.isNotEmpty() },
                 runningTime = movietime.takeIf { it != null },
                 normalNFTPrice = normalprice.takeIf { it != null },
-                saleStartDate = selldate.takeIf { it !=" " },
-                saleEndDate = selleddate.takeIf { it !=" " },
+                saleStartTime = selldate.takeIf { it !=" " },
+                saleEndTime  = selleddate.takeIf { it !=" " },
                 overView = overview.takeIf { it !=" " },
                 show = show
             )

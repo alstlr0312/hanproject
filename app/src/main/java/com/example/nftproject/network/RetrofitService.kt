@@ -2,6 +2,7 @@ package com.example.nftproject.network
 
 import com.example.nftproject.model.GetMovieResponse
 import com.example.nftproject.model.GetMyNftResponse
+import com.example.nftproject.model.MovieDetailResponse
 import com.example.nftproject.model.NftMakeResponse
 import com.unity.mynativeapp.model.*
 import okhttp3.MultipartBody
@@ -17,7 +18,7 @@ interface RetrofitService {
 	@POST("email")
 	fun emailCode(@Body codeRequest: EmailCodeRequest): Call<MyResponse<EmailCodeResponse>>
 	// 이메일 인증 코드 확인
-	@POST("email/check")
+	@POST("/email/check")
 	fun emailCheck(
 		@Query("code") code: String
 	): Call<MyResponse<String>>
@@ -53,4 +54,10 @@ interface RetrofitService {
 	//영화 목록 확인
 	@GET("/movie")
 	fun getmovie(): Call<MyResponse<GetMovieResponse>>
+
+	// 다이어리 상세 조회
+	@GET("/movie/detail/{num}")
+	fun getdetailmovie(
+		@Path("num") num: Int
+	) : Call<MyResponse<MovieDetailResponse>>
 }

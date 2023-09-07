@@ -9,6 +9,7 @@ class GetMyNftResponse (
 )
 
 data class nftListItem(
+    @SerializedName("id") val id: Int,
     @SerializedName("movieTitle") val movieTitle: String,
     @SerializedName("nftPrice") val nftPrice: Int,
     @SerializedName("nftCount") val nftCount: Int,

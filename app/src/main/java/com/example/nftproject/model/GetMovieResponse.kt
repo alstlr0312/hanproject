@@ -11,6 +11,7 @@ data class GetMovieResponse(
 )
 
 data class movieListItem(
+    @SerializedName("id") val id: Int,
     @SerializedName("poster") val poster: String,
     @SerializedName("movieTitle")val movieTitle:String?
 )

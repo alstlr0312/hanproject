@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentSignUpBinding
 import com.example.nftproject.network.util.LoadingDialog
@@ -53,8 +52,9 @@ class SignUpFragment : Fragment() {
             val name = binding.edtUsername.text.toString()
             val email = binding.edtEmail.text.toString()
             val code = binding.edtAuthenticateCode.text.toString()
+            val pwcheck = binding.edtPasswordConfirm.text.toString()
 
-            viewModel.signup(id, pw, email, name, code)
+            viewModel.signup(id, pw,pwcheck, email, name, code)
         }
 
         binding.btnBack.setOnClickListener {

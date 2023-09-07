@@ -37,6 +37,7 @@ class SignUpViewModel : ViewModel() {
 
     private var checkCode = ""
     fun check(email: String) {
+
         _loading.postValue(SHOW_LOADING)
         postCheckAPI(email)
     }
@@ -66,7 +67,7 @@ class SignUpViewModel : ViewModel() {
         })
     }
 
-    fun signup(id: String, password: String, email: String, nickname: String, code: String) {
+    fun signup(id: String, password: String, passwordCheck: String, email: String, nickname: String, code: String) {
 
         _loading.postValue(SHOW_TEXT_LOADING)
 
@@ -80,6 +81,11 @@ class SignUpViewModel : ViewModel() {
             return
         }
 
+        if (password != passwordCheck) {
+            _toastMessage.postValue(PW_NOT_SAME_ERROR)
+            return
+        }
+
         if (email.isEmpty()) {
             _toastMessage.postValue(EMAIL_EMPTY_ERROR)
             return
@@ -90,12 +96,12 @@ class SignUpViewModel : ViewModel() {
             return
         }
 
-        if(code != checkCode){
+       /* if(code != checkCode){
             _toastMessage.postValue(EMAIL_CODE_SAME_ERROR)
             return
-        }
+        }*/
 
-        RetrofitClient.getApiService().signup(checkCode, SignUpRequest(id, password, nickname, email)).enqueue(object : Callback<MyResponse<String>> {
+        RetrofitClient.getApiService().signup(code, SignUpRequest(id, password, nickname, email)).enqueue(object : Callback<MyResponse<String>> {
             override fun onResponse(call: Call<MyResponse<String>>, response: Response<MyResponse<String>>) {
                 _loading.postValue(DISMISS_LOADING)
 

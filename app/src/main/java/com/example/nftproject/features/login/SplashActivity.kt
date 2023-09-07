@@ -17,14 +17,19 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
         Handler(Looper.getMainLooper()).postDelayed({
-            checkLogin()}, 2000)
+            checkLogin()
+        }, 2000)
     }
 
-    fun checkLogin(){
+    fun checkLogin() {
+
         val accessToken = MyApplication.prefUtil.getString(X_ACCESS_TOKEN, null)
-        val nextActivity = if (accessToken != null) LoginActivity::class.java else LoginActivity::class.java
+        val nextActivity =
+            if (accessToken != null) MainActivity::class.java else LoginActivity::class.java
         startActivity(Intent(this, nextActivity))
         finish()
+
     }
 }

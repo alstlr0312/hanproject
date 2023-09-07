@@ -1,27 +1,17 @@
 package com.example.nftproject.makerfeatures.mhome
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nftproject.MyApplication
 import com.example.nftproject.R
-import com.example.nftproject.databinding.FragmentHomeBinding
 import com.example.nftproject.databinding.FragmentMhomeBinding
 import com.example.nftproject.makerfeatures.makeNft.MakenftFragment
 import com.example.nftproject.model.nftListItem
-import com.example.nftproject.network.util.LoadingDialog
-import com.example.nftproject.network.util.X_ACCESS_TOKEN
-import com.example.nftproject.network.util.X_REFRESH_TOKEN
 import com.unity.mynativeapp.config.DialogFragment
-import kotlin.math.log
 
 class MhomeFragment: DialogFragment<FragmentMhomeBinding>(FragmentMhomeBinding::bind, R.layout.fragment_mhome)  {
 
@@ -66,7 +56,7 @@ class MhomeFragment: DialogFragment<FragmentMhomeBinding>(FragmentMhomeBinding::
         }
 
         viewModel.loading.observe(viewLifecycleOwner) { isLoading ->
-            if (isLoading) showLoadingDialog(requireContext()) else dismissLoadingDialog()
+          //  if (isLoading) showLoadingDialog(requireContext()) else dismissLoadingDialog()
         }
         viewModel.logout.observe(this){
             if(it) logout()
@@ -89,6 +79,7 @@ class MhomeFragment: DialogFragment<FragmentMhomeBinding>(FragmentMhomeBinding::
                 for (pnft in getNftInfo) {
                     homeAdapter.addItem(
                         nftListItem(
+                            id = pnft.id,
                             movieTitle = pnft.movieTitle,
                             nftPrice = pnft.nftPrice,
                             nftCount = pnft.nftCount,
