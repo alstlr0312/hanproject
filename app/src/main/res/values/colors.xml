@@ -15,5 +15,7 @@
     <color name="main_gray">#7C7C7C</color>
     <color name="main_gray_light">#D5D5D5</color>
     <color name="pressded_blue">#011243</color>
+    <color name="main_black_dark">#202020</color>
     <color name="dark_blue">#121A73</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>

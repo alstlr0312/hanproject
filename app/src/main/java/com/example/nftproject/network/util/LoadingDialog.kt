@@ -6,8 +6,13 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Window
 import com.example.nftproject.R
+import com.example.nftproject.databinding.DialogLoadingBinding
+import com.example.nftproject.makerfeatures.mhome.detailfnt.DetailNftFragment
 
-class LoadingDialog(context: Context): Dialog(context) {
+class LoadingDialog(context: Context, val title: String = ""): Dialog(context) {
+    val binding by lazy {
+        DialogLoadingBinding.inflate(layoutInflater)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

@@ -10,9 +10,7 @@ import com.unity.mynativeapp.config.DialogFragment
 
 
 class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHomeDetailBinding::bind, R.layout.fragment_home_detail)  {
-    private var firstStart = true
     private val viewModel by viewModels<HomeViewModel>()
-    private var postId = -1
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getString("Id")?.toInt()
@@ -27,7 +25,7 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
     private fun subscribeUI() {
 
         viewModel.loading.observe(this) { isLoading ->
-            if (isLoading) showLoadingDialog(this) else dismissLoadingDialog()
+            if (isLoading) showLoadingDialog(requireContext()) else dismissLoadingDialog()
         }
 
         viewModel.logout.observe(this) {

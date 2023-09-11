@@ -1,5 +1,6 @@
 package com.unity.mynativeapp.config
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +11,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.example.nftproject.MyApplication
-import com.example.nftproject.features.home.HomeDetailFragment
+import com.example.nftproject.makerfeatures.mhome.detailfnt.DetailNftFragment
 import com.example.nftproject.network.util.LoadingDialog
 import com.example.nftproject.network.util.X_ACCESS_TOKEN
 import com.example.nftproject.network.util.X_REFRESH_TOKEN
@@ -37,9 +38,9 @@ open class DialogFragment<B : ViewBinding>(private val bind: (View) -> B, @Layou
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
-    fun showLoadingDialog(context: HomeDetailFragment) {
-      //  lodingDialog = LoadingDialog(context)
-        //lodingDialog.show()
+    fun showLoadingDialog(context: Context) {
+        lodingDialog = LoadingDialog(context)
+        lodingDialog.show()
     }
 
     fun dismissLoadingDialog() {

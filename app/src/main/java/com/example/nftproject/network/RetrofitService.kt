@@ -1,9 +1,6 @@
 package com.example.nftproject.network
 
-import com.example.nftproject.model.GetMovieResponse
-import com.example.nftproject.model.GetMyNftResponse
-import com.example.nftproject.model.MovieDetailResponse
-import com.example.nftproject.model.NftMakeResponse
+import com.example.nftproject.model.*
 import com.unity.mynativeapp.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -50,14 +47,21 @@ interface RetrofitService {
 		@Query("size") size: Int?
 	) : Call<MyResponse<GetMyNftResponse>>
 
+	// 내가 발행한 목록 상세 조회
+	@GET("/nft/detail/{num}")
+	fun getdetailmynft(
+		@Path("num") num: Int
+	) : Call<MyResponse<PnftResponse>>
 
 	//영화 목록 확인
 	@GET("/movie")
 	fun getmovie(): Call<MyResponse<GetMovieResponse>>
 
-	// 다이어리 상세 조회
+	// 영화 목록 상세 조회
 	@GET("/movie/detail/{num}")
 	fun getdetailmovie(
 		@Path("num") num: Int
 	) : Call<MyResponse<MovieDetailResponse>>
+
+
 }
