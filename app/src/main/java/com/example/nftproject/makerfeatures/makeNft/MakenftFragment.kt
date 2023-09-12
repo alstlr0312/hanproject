@@ -6,18 +6,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.example.nftproject.R
-import com.example.nftproject.databinding.FragmentHomeBinding
 import com.example.nftproject.databinding.FragmentMakenftBinding
 import com.example.nftproject.model.NftMakeRequest
 import com.example.nftproject.model.NftcountRequest
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.GsonBuilder
 import com.unity.mynativeapp.config.DialogFragment
 import okhttp3.MediaType.Companion.toMediaType
@@ -30,7 +26,8 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBinding::bind, R.layout.fragment_makenft)  {
+
+class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBinding::bind, com.example.nftproject.R.layout.fragment_makenft)  {
 
     private val viewModel by viewModels<MakeViewModel>()
     private var posterFile: File? = null
@@ -42,6 +39,7 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
         setUiEvent()
         setCalender()
         setImg()
+        hideBottomNavigation(true)
     }
 
 
@@ -248,5 +246,14 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
             file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
 
         return MultipartBody.Part.createFormData(name, file.name, requestBody)
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideBottomNavigation(false)
+    }
+    fun hideBottomNavigation(bool: Boolean) {
+        val bottomNavigation = activity!!.findViewById<BottomNavigationView>(com.example.nftproject.R.id.nav_dir_bar)
+        if (bool == true) bottomNavigation.visibility = View.GONE else bottomNavigation.visibility =
+            View.VISIBLE
     }
 }

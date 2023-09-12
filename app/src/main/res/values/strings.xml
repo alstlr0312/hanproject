@@ -37,4 +37,6 @@
     <string name="publisher">발행자</string>
     <string name="movie_title">영화제목</string>
     <string name="title">영화 제목</string>
+    <string name="event">게시글</string>
+    <string name="setting">내정보</string>
 </resources>

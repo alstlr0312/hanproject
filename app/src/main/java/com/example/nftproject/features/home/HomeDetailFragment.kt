@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentHomeDetailBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.unity.mynativeapp.config.DialogFragment
 
 
@@ -21,6 +22,7 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
 
         if(id != -1) id?.let { viewModel.getMovieDetail(it as Int) }
         subscribeUI()
+        hideBottomNavigation(true)
     }
     private fun subscribeUI() {
 
@@ -58,8 +60,8 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
                     binding.rareDegree.visibility = View.INVISIBLE
                     binding.legendDegree.visibility = View.VISIBLE
                 }
-                binding.saledateTxt.text = data?.saleStartTime
-                binding.saleendTxt.text = data?.saleEndTime
+                binding.saledateTxt.text = data?.saleStartDate
+                binding.saleendTxt.text = data?.saleEndDate
                 binding.runningTimeTxt.text = data.runningTime.toString() + "분"
                 binding.sellBtn.text = data.normalNFTPrice.toString()+"원"
                 binding.directerTxt.text = data.director
@@ -70,5 +72,14 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
                 binding.createdAtTxt.text = data.createdAt.substring(2, 10)
             }
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideBottomNavigation(false)
+    }
+    fun hideBottomNavigation(bool: Boolean) {
+        val bottomNavigation = activity!!.findViewById<BottomNavigationView>(R.id.nav_bar)
+        if (bool == true) bottomNavigation.visibility = View.GONE else bottomNavigation.visibility =
+            View.VISIBLE
     }
 }

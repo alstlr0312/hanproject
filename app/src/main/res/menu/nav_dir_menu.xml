@@ -4,17 +4,21 @@
     <item
         android:id="@+id/mhomeFragment"
         android:icon="@drawable/home_icon"
+        style="@style/SmallTextStyle"
         android:title="@string/menu_home" />
     <item
         android:id="@+id/mgiftFragment"
         android:icon="@drawable/present_icon"
+        style="@style/SmallTextStyle"
         android:title="@string/menu_gift" />
     <item
         android:id="@+id/mboardFragment"
         android:icon="@drawable/board_icon"
-        android:title="게시글" />
+        style="@style/SmallTextStyle"
+        android:title="@string/event" />
     <item
         android:id="@+id/mmypageFragment"
         android:icon="@drawable/mypage_icon"
-        android:title="내정보" />
+        style="@style/SmallTextStyle"
+        android:title="@string/setting" />
 </menu>

@@ -26,9 +26,9 @@ class MhomeAdaptor(private val context: Context) : RecyclerView.Adapter<MhomeAda
             counter++
             binding.nnumList.text = counter.toString()
             binding.ntitleList.text = item.movieTitle
-            binding.ncostList.text = item.nftPrice.toString()
+            binding.nsellList.text = item.nftPrice.toString()
             binding.ndayList.text = item.saleEndDate.toString()
-            binding.nsellList.text = item.nftCount.toString()
+            binding.ncostList.text = item.nftCount.toString()
             binding.root.setOnClickListener {
                 val bundle = Bundle().apply {
                     putString("key",item.id.toString())

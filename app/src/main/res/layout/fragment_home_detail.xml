@@ -67,6 +67,7 @@
                 android:layout_width="130dp"
                 android:layout_height="33dp"
                 android:text="@string/movie_title"
+                style="@style/TitleTextStyle"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="24sp"
@@ -107,6 +108,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/publisher"
+                style="@style/SmallTextStyle"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/normal_degree"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="발행일"
+                style="@style/NormalTextStyle"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView15"
@@ -133,6 +136,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="발행종료"
+                style="@style/NormalTextStyle"
                 android:textColor="#000000"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +149,7 @@
                 android:layout_marginStart="24dp"
                 android:textColor="@color/black"
                 android:text="2023-09-07"
+                style="@style/NormalTextStyle"
                 app:layout_constraintBottom_toBottomOf="@+id/textView14"
                 app:layout_constraintStart_toEndOf="@+id/textView14"
                 app:layout_constraintTop_toTopOf="@+id/textView14"
@@ -155,21 +160,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2023-10-01"
+                style="@style/NormalTextStyle"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textView15"
                 app:layout_constraintStart_toStartOf="@+id/saledate_txt"
                 app:layout_constraintTop_toTopOf="@+id/textView15" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/sell_btn"
                 android:layout_width="156dp"
                 android:layout_height="38dp"
-                android:layout_marginEnd="28dp"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/shape_blackblue"
                 android:text="15000원"
+                style="@style/NormalTextStyle"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/saleend_txt"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/saledate_txt" />
+                app:layout_constraintTop_toBottomOf="@+id/bar2" />
 
             <TextView
                 android:id="@+id/textview33"
@@ -177,6 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="감독명"
+                style="@style/NormalTextStyle"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textView15"
@@ -187,6 +196,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="봉준호"
+                style="@style/NormalTextStyle"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textview33"
                 app:layout_constraintStart_toStartOf="@+id/saleend_txt"
@@ -198,6 +208,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="출연배우"
+                style="@style/NormalTextStyle"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/textview33"
@@ -209,6 +220,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:text="김씨,박씨,이씨,최씨,남궁씨,"
+                style="@style/NormalTextStyle"
                 app:layout_constraintBottom_toBottomOf="@+id/textView19"
                 app:layout_constraintStart_toStartOf="@+id/directer_txt"
                 app:layout_constraintTop_toTopOf="@+id/textView19" />
@@ -220,6 +232,7 @@
                 android:layout_marginStart="50dp"
                 android:layout_marginTop="16dp"
                 android:text="2023-09-05"
+                style="@style/NormalTextStyle"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -231,6 +244,7 @@
                 android:layout_marginStart="8dp"
                 android:text="ㅣ"
                 android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/createdAt_txt"
                 app:layout_constraintStart_toEndOf="@+id/createdAt_txt"
                 app:layout_constraintTop_toTopOf="@+id/createdAt_txt" />
 
@@ -241,8 +255,10 @@
                 android:layout_marginStart="8dp"
                 android:text="ㅣ"
                 android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/runningTime_txt"
                 app:layout_constraintStart_toEndOf="@+id/runningTime_txt"
                 app:layout_constraintTop_toTopOf="@+id/runningTime_txt" />
+
             <TextView
                 android:id="@+id/textView26"
                 android:layout_width="wrap_content"
@@ -250,37 +266,42 @@
                 android:layout_marginStart="8dp"
                 android:text="ㅣ"
                 android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/filmRating_txt"
                 app:layout_constraintStart_toEndOf="@+id/filmRating_txt"
                 app:layout_constraintTop_toTopOf="@+id/filmRating_txt" />
+
             <TextView
                 android:id="@+id/filmRating_txt"
+                style="@style/NormalTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="12세관람가"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/textView23"
-                app:layout_constraintTop_toTopOf="@+id/textView23" />
+                app:layout_constraintTop_toTopOf="@+id/createdAt_txt" />
 
             <TextView
                 android:id="@+id/runningTime_txt"
+                style="@style/NormalTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="128분"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/textView26"
-                app:layout_constraintTop_toTopOf="@+id/textView26" />
+                app:layout_constraintTop_toTopOf="@+id/filmRating_txt" />
 
             <TextView
                 android:id="@+id/genre_txt"
+                style="@style/NormalTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="DRAMA"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toEndOf="@+id/textView27"
-                app:layout_constraintTop_toTopOf="@+id/textView27" />
+                app:layout_constraintTop_toTopOf="@+id/runningTime_txt" />
 
             <TextView
                 android:id="@+id/textView29"
@@ -288,6 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="줄거리"
+                style="@style/NormalTextStyle"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -297,9 +319,11 @@
 
             <TextView
                 android:id="@+id/description_txt"
+                style="@style/NormalTextStyle"
                 android:layout_width="361dp"
                 android:layout_height="184dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
                 android:background="@drawable/shape_edge_blue_round"
                 android:gravity="top"
                 android:lineSpacingExtra="1dp"
@@ -309,6 +333,7 @@
                 android:paddingVertical="5dp"
                 android:text="줄거리입니다."
                 android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView29" />"/>

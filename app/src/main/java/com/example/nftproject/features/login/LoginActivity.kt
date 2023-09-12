@@ -38,17 +38,6 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
 
     private fun handleRadioButtonSelection() {
         val isRadioButton2Checked = binding.customerloginBtn.isChecked
-
-        binding.kakaoBtn.visibility = if (isRadioButton2Checked) View.VISIBLE else View.GONE
-
-        // 나머지 버튼들을 표시 또는 숨김
-        binding.idText.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
-        binding.pwText.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
-        binding.loginBtn.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
-        binding.makeaccountBtn.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
-        binding.imageView5.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
-        binding.tvFindId.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
-        binding.tvFindPw.visibility = if (!isRadioButton2Checked) View.VISIBLE else View.GONE
     }
 
     private fun setUiEvent() {
@@ -56,10 +45,6 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
             handleRadioButtonSelection()
         }
 
-        //카카오 로그인
-        val intent = Intent(this, MainActivity::class.java)
-        binding.kakaoBtn.setOnClickListener { startActivity(intent) }
-        //사업자 로그인
         binding.loginBtn.setOnClickListener {
             val id = binding.idText.text.toString()
             val password = binding.pwText.text.toString()
@@ -87,8 +72,9 @@ class LoginActivity : DialogActivity<ActivityLoginBinding>(ActivityLoginBinding:
 
         viewModel.loginSuccess.observe(this) { isSuccess ->
             if (!isSuccess) return@observe
-            //startActivity(Intent(this, MainActivity::class.java))
-            startActivity(Intent(this, MakerActivity::class.java))
+            if(binding.customerloginBtn.isChecked){
+                startActivity(Intent(this, MainActivity::class.java))
+            }else{ startActivity(Intent(this, MakerActivity::class.java))}
             finish()
         }
     }
