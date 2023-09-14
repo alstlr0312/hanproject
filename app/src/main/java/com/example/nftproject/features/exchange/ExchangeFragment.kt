@@ -35,7 +35,7 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
     private fun setView() {
         exAdapter = ExcFraAdapter(requireContext())
         binding.rvPostList.adapter = exAdapter
-        val layoutManager = GridLayoutManager(requireContext(), 3)
+        val layoutManager = GridLayoutManager(requireContext(), 1)
         binding.rvPostList.layoutManager = layoutManager
         viewModel.getMovie()
 

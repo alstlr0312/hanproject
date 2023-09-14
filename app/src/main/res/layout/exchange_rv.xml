@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="3dp">
 
@@ -10,14 +10,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:background="@drawable/shape_edge_gray_and_blackblue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="125dp"
-            android:layout_height="173dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:cardElevation="0dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -27,8 +28,9 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
+                android:layout_width="386dp"
+                android:layout_height="wrap_content"
+
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/rv_movieimg"
@@ -37,10 +39,9 @@
 
                 <ImageView
                     android:id="@+id/rv_movieimg"
-                    android:layout_width="113dp"
-                    android:layout_height="90dp"
+                    android:layout_width="66dp"
+                    android:layout_height="77dp"
                     android:scaleType="centerCrop"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/img_logo" />
@@ -48,26 +49,35 @@
 
                 <TextView
                     android:id="@+id/rv_title"
-                    style="@style/SmallTextStyle"
-                    android:layout_width="match_parent"
+                    style="@style/NormalTextStyle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
                     android:text="영화명"
                     android:textAlignment="center"
                     android:textColor="#221F80"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.506"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_movieimg"
-                    app:layout_constraintVertical_bias="0.225" />
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_movieimg"
+                    app:layout_constraintStart_toEndOf="@+id/rv_movieimg"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <CheckBox
                     android:id="@+id/checkBox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_movieimg"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_title" />
+                    app:layout_constraintTop_toTopOf="@+id/rv_movieimg" />
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="102dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="32dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv_movieimg"
+                    app:layout_constraintStart_toEndOf="@+id/rv_title"
+                    app:layout_constraintTop_toTopOf="@+id/rv_movieimg"
+                    app:srcCompat="@drawable/legend_img" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
