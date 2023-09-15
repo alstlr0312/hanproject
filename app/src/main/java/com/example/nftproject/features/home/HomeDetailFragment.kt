@@ -1,12 +1,15 @@
 package com.example.nftproject.features.home
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.nftproject.MyApplication
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentHomeDetailBinding
+import com.example.nftproject.makerfeatures.makeNft.PostageSortDialog
 import com.example.nftproject.makerfeatures.mhome.MhomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.unity.mynativeapp.config.DialogFragment
@@ -31,8 +34,14 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
 
     private fun setUiEvent(id: Int?) {
         binding.buyBtn.setOnClickListener {
-            if (id != null) {
-                viewModel.getBuyNft(id)
+            val dialog = YesOrNo1Dialog(requireContext())
+            dialog.show()
+            dialog.setOnDismissListener {
+                if (dialog.resultCode == 1) {
+                    if (id != null) {
+                        viewModel.getBuyNft(id)
+                    }
+                }
             }
         }
     }
@@ -82,7 +91,7 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
                 binding.filmRatingTxt.text = data.filmRating
                 binding.genreTxt.text = data.movieGenre
                 binding.descriptionTxt.text = data.description
-                binding.createdAtTxt.text = data.createdAt.substring(2, 10)
+                //binding.createdAtTxt.text = data.createdAt.substring(2, 10)
             }
         }
         viewModel.postBuyNftSuccess.observe(this) { data ->

@@ -50,21 +50,17 @@ class HomeFragment: DialogFragment<FragmentHomeBinding>(FragmentHomeBinding::bin
 
                 hAdapter.itemList = if (searchText.isEmpty()) {
                     viewModel.myMovieData.value?.movieListDtos?.toMutableList() ?: mutableListOf()
-                    // If the search text is empty, show all data
                 } else {
                     viewModel.myMovieData.value?.movieListDtos?.filter { data ->
-                        // Otherwise filter the data according to the search text
                         val movieName = data.movieTitle?.toLowerCase(Locale.getDefault())
                         movieName != null && movieName.contains(searchText)
                     }?.toMutableList() ?: mutableListOf()
-                    // Convert the result of filter to a MutableList
                 }
 
                 hAdapter.notifyDataSetChanged()
             }
         })
     }
-
 
 
     private fun subscribeUI() {

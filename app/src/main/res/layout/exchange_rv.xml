@@ -69,12 +69,12 @@
                     app:layout_constraintTop_toTopOf="@+id/rv_movieimg" />
 
                 <ImageView
-                    android:id="@+id/imageView10"
+                    android:id="@+id/exlevel_img"
                     android:layout_width="102dp"
                     android:layout_height="30dp"
-                    android:layout_marginStart="32dp"
+                    android:layout_marginEnd="16dp"
                     app:layout_constraintBottom_toBottomOf="@+id/rv_movieimg"
-                    app:layout_constraintStart_toEndOf="@+id/rv_title"
+                    app:layout_constraintEnd_toStartOf="@+id/checkBox"
                     app:layout_constraintTop_toTopOf="@+id/rv_movieimg"
                     app:srcCompat="@drawable/legend_img" />
             </androidx.constraintlayout.widget.ConstraintLayout>

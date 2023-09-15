@@ -55,6 +55,14 @@ interface RetrofitService {
 		@Path("num") num: Int
 	) : Call<MyResponse<PnftResponse>>
 
+	// 내가 구매한 nft 목록
+	@GET("/nft/pick/list")
+	fun getbuynft(
+		@Query("username") username: String?,
+		@Query("page") page: Int?,
+		@Query("size") size: Int?
+	) : Call<MyResponse<MyNftResponse>>
+
 	//영화 목록 확인
 	@GET("/movie")
 	fun getmovie(
@@ -75,12 +83,5 @@ interface RetrofitService {
 
 	//NFT교환
 	@POST("nft/pick")
-	fun exnft(
-		@Part nftSerialnum1: Int,
-		@Part nftLevel1: String,
-		@Part nftSerialnum2: Int,
-		@Part nftLevel2: String,
-		@Part nftSerialnum3: Int,
-		@Part nftLevel3: String,
-	) : Call<MyResponse<exChangerResponse>>
+	fun exnft(@Body exchangeRequest: ExChangeRequest) : Call<MyResponse<exChangerResponse>>
 }

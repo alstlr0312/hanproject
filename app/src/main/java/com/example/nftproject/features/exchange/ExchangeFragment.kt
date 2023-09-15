@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.util.SparseBooleanArray
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -14,9 +13,8 @@ import com.bumptech.glide.Glide
 import com.example.nftproject.MyApplication
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentExchangeBinding
-import com.example.nftproject.features.home.HomeViewModel
-import com.example.nftproject.model.movieListItem
-import com.example.nftproject.model.nftListItem
+import com.example.nftproject.makerfeatures.mhome.MhomeFragment
+import com.example.nftproject.model.nftPickItem
 import com.unity.mynativeapp.config.DialogFragment
 import java.util.*
 
@@ -29,6 +27,13 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
     private lateinit var publisherName: String
     private var currentPage = 0
     private val pageSize = 20
+
+    var nftSerialnum1: String? = null
+    var nftLevel1: String? = null
+    var nftSerialnum2: String? = null
+    var nftLevel2: String? = null
+    var nftSerialnum3: String? = null
+    var nftLevel3: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,24 +48,30 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
         val layoutManager = GridLayoutManager(requireContext(), 1)
         binding.rvPostList.layoutManager = layoutManager
         publisherName = MyApplication.prefUtil.getString("username", "").toString()
-        viewModel.getmyPost("최신순", publisherName, currentPage, pageSize)
+        viewModel.getmyPost( publisherName, currentPage, pageSize)
 
         exAdapter.setOnItemCheckedListener(object : ExcFraAdapter.OnItemCheckedListener {
-            override fun onItemChecked(item: nftListItem, isChecked: Boolean) {
+            override fun onItemChecked(item: nftPickItem, isChecked: Boolean) {
                 if (isChecked) {
                     // 아이템이 체크되었을 때의 동작 구현
                     when {
                         binding.chooseimg1.tag == null -> {
-                            binding.chooseimg1.tag = item.id
-                          //  Glide.with(requireContext()).load(Uri.parse(item.poster)).into(binding.chooseimg1)
+                            binding.chooseimg1.tag = item.movieTitle
+                            nftSerialnum1 = item.nftSerialnum
+                            nftLevel1 = item.nftLevel
+                            Glide.with(requireContext()).load(Uri.parse(item.poster)).into(binding.chooseimg1)
                         }
                         binding.chooseimg2.tag == null -> {
-                            binding.chooseimg2.tag = item.id
-                           // Glide.with(requireContext()).load(Uri.parse(item.poster)).into(binding.chooseimg2)
+                            binding.chooseimg2.tag = item.movieTitle
+                            nftSerialnum2 = item.nftSerialnum
+                            nftLevel2 = item.nftLevel
+                            Glide.with(requireContext()).load(Uri.parse(item.poster)).into(binding.chooseimg2)
                         }
                         binding.chooseimg3.tag == null -> {
-                            binding.chooseimg3.tag = item.id
-                          //  Glide.with(requireContext()).load(Uri.parse(item.poster)).into(binding.chooseimg3)
+                            binding.chooseimg3.tag = item.movieTitle
+                            nftSerialnum3 = item.nftSerialnum
+                            nftLevel3 = item.nftLevel
+                            Glide.with(requireContext()).load(Uri.parse(item.poster)).into(binding.chooseimg3)
                         }
                         else -> {
                             return
@@ -68,7 +79,7 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
                     }
                 } else {
                     // 아이템이 해제되었을 때의 동작 구현
-                    val itemIdToRemove = item.id
+                    val itemIdToRemove = item.movieTitle
                     if (binding.chooseimg1.tag == itemIdToRemove) {
                         binding.chooseimg1.setImageResource(R.drawable.input_img)
                         binding.chooseimg1.tag = null // 태그 초기화
@@ -82,6 +93,17 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
                 }
             }
         })
+
+        binding.changeBtn.setOnClickListener {
+            val dialog = YesOrNoDialog(requireContext())
+            dialog.show()
+            dialog.setOnDismissListener {
+                if (dialog.resultCode == 1) {
+                    viewModel.exNftPost(
+                        nftSerialnum1.toString(), nftLevel1.toString(),nftSerialnum2.toString() ,nftLevel2.toString(),nftSerialnum3.toString() ,nftLevel3.toString())
+                }
+            }
+        }
     }
 
     private fun searchMovie() {
@@ -96,7 +118,7 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
 
             override fun afterTextChanged(s: Editable) {
                 val searchText = s.toString().toLowerCase(Locale.getDefault())
-                val originalList = viewModel.emyNftData.value?.nftListDtos ?: listOf()
+                val originalList = viewModel.emyNftData.value?.nftPickDtos ?: listOf()
 
                 exAdapter.itemList = if (searchText.isEmpty()) {
                     originalList.toMutableList()
@@ -128,27 +150,44 @@ class ExchangeFragment: DialogFragment<FragmentExchangeBinding>(FragmentExchange
 
         viewModel.emyNftData.observe(viewLifecycleOwner) { data ->
             Log.d("Check", "Data: $data")
-            Log.d("있음", "있음")
             if (data != null) {
-                if (data.nftListDtos != null) {
+                if (data.nftPickDtos != null) {
                     exAdapter.removeAllItem()
-                    val getMovieInfo = data.nftListDtos
+                    val getMovieInfo = data.nftPickDtos
 
                     for (pnft in getMovieInfo) {
                         exAdapter.addItem(
-                            nftListItem(
-                                id = pnft.id,
+                            nftPickItem(
+                                poster = pnft.poster,
                                 movieTitle = pnft.movieTitle,
-                                nftPrice = pnft.nftPrice,
-                                nftCount = pnft.nftCount,
-                                runningTime = pnft.runningTime,
-                                saleStartDate = pnft.saleStartDate,
-                                saleEndDate = pnft.saleEndDate,
+                                nftLevel = pnft.nftLevel,
+                                nftSerialnum = pnft.nftSerialnum,
                             )
                         )
                     }
                     getPostHasNext = data.hasNext
                     getPostIsFirst = data.isFirst
+                }
+            }
+        }
+
+        viewModel.newNftData.observe(viewLifecycleOwner) { data ->
+            Log.d("Check", "Data: $data")
+            if (data != null) {
+                val newimg = data.mediaUrl
+                val newtitle = data.movieName
+                val newlevel = data.nftLevel
+                Log.d("다이얼로그확인", newtitle)
+                val dialog = NewNftDialog(requireContext(), newimg, newtitle, newlevel)
+                dialog.show()
+                dialog.setOnDismissListener {
+                    if (dialog.resultCode == 1) {
+                        val refreshedFragment = ExchangeFragment()
+                        requireActivity().supportFragmentManager.beginTransaction().apply {
+                            replace(R.id.changeFrame, refreshedFragment)
+                            commit()
+                        }
+                    }
                 }
             }
         }
