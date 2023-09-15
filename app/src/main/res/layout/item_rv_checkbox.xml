@@ -7,13 +7,13 @@
     <androidx.appcompat.widget.AppCompatCheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_height="35dp"
         android:background="@drawable/sel_checkbox_box"
         android:button="@android:color/transparent"
         android:gravity="center"
         android:text=""
-        android:textColor="@color/white"
-        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:textSize="10sp"
         android:paddingHorizontal="8dp"
         android:paddingVertical="5dp"/>
 

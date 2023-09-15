@@ -167,7 +167,7 @@
                 app:layout_constraintTop_toTopOf="@+id/textView15" />
 
             <android.widget.Button
-                android:id="@+id/sell_btn"
+                android:id="@+id/buy_btn"
                 android:layout_width="156dp"
                 android:layout_height="38dp"
                 android:layout_marginEnd="16dp"

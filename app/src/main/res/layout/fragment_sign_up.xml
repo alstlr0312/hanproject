@@ -45,68 +45,96 @@
                 app:layout_constraintTop_toBottomOf="@id/iv_logo"
                 app:layout_constraintEnd_toEndOf="parent"/>
 
+            <RadioGroup
+                android:id="@+id/signupradio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sign_up">
+
+                <RadioButton
+                    android:id="@+id/directsign_btn"
+                    style="@style/SmallTextStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:text="발급자"
+                    android:textColor="@color/black" />
+
+                <RadioButton
+                    android:id="@+id/customersign_btn"
+                    style="@style/SmallTextStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    android:text="일반"
+                    android:textColor="@color/black" />
+            </RadioGroup>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_edge_blue_round"
                 android:layout_marginHorizontal="50dp"
-                android:layout_marginTop="16sp"
-                app:layout_constraintStart_toStartOf="@id/edt_id"
+                android:background="@drawable/shape_edge_blue_round"
                 app:layout_constraintEnd_toEndOf="@id/edt_id"
-                app:layout_constraintTop_toBottomOf="@id/tv_sign_up">
+                app:layout_constraintStart_toStartOf="@id/edt_id"
+                app:layout_constraintTop_toBottomOf="@+id/signupradio">
 
                 <EditText
                     android:id="@+id/edt_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
                     android:background="@android:color/transparent"
-                    android:hint="@string/input_email"
-                    android:inputType="textEmailAddress"
-                    android:textColorHint="@color/main_gray"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="12dp"
                     android:drawableStart="@drawable/ic_input_email"
                     android:drawablePadding="8dp"
                     android:drawableTint="@color/light_blue"
+                    android:hint="@string/input_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/main_gray"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <View
                     android:id="@+id/line_email"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:drawableTint="@color/light_blue"
                     android:layout_marginHorizontal="@dimen/fab_margin"
+                    android:drawableTint="@color/light_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/edt_email"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/edt_email" />
 
                 <EditText
                     android:id="@+id/edt_authenticate_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textSize="16sp"
-                    android:textColor="@color/black"
                     android:background="@android:color/transparent"
-                    android:visibility="gone"
-                    android:hint="@string/input_authenticate_code"
-                    android:inputType="textEmailAddress"
-                    android:textColorHint="@color/main_gray"
-                    android:paddingHorizontal="14dp"
-                    android:paddingVertical="12dp"
                     android:drawableStart="@drawable/ic_email_authenticate"
                     android:drawablePadding="8dp"
                     android:drawableTint="@color/light_blue"
+                    android:hint="@string/input_authenticate_code"
+                    android:inputType="textEmailAddress"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="12dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/main_gray"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/line_email"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/line_email" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -170,6 +198,7 @@
                 android:text="@string/id_length"
                 android:textSize="12sp"
                 android:visibility="gone"
+                android:textColor="@color/gray"
                 android:drawableTint="@color/light_blue"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
@@ -206,6 +235,7 @@
                 android:text="@string/password_format"
                 android:drawableTint="@color/light_blue"
                 android:textSize="12sp"
+                android:textColor="@color/gray"
                 android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"
@@ -244,6 +274,7 @@
                 android:text="@string/password_not_same"
                 android:drawableTint="@color/light_blue"
                 android:textSize="12sp"
+                android:textColor="@color/gray"
                 android:visibility="gone"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="5dp"

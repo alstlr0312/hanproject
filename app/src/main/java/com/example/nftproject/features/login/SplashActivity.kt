@@ -26,7 +26,7 @@ class SplashActivity : AppCompatActivity() {
 
         val accessToken = MyApplication.prefUtil.getString(X_ACCESS_TOKEN, null)
         val nextActivity =
-            if (accessToken != null) MainActivity::class.java else LoginActivity::class.java
+            if (accessToken != null) MakerActivity::class.java else LoginActivity::class.java
         startActivity(Intent(this, nextActivity))
         finish()
 

@@ -7,7 +7,7 @@ data class SignUpRequest (
 	val loginId: String,
 	@SerializedName("password")
 	val password: String,
-	@SerializedName("publisherName")
+	@SerializedName("username")
 	val username: String,
 	@SerializedName("email")
 	val email: String

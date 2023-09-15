@@ -12,8 +12,8 @@ data class NftMakeRequest(
     @SerializedName("actors") val actors: Array<String>?,
     @SerializedName("runningTime") val runningTime: Int?,
     @SerializedName("normalNFTPrice") val normalNFTPrice: Int?,
-    @SerializedName("saleStartTime") val saleStartTime: String?,
-    @SerializedName("saleEndTime") val saleEndTime: String?,
+    @SerializedName("saleStartDate") val saleStartDate: String?,
+    @SerializedName("saleEndDate") val saleEndDate: String?,
     @SerializedName("overView") val overView: String?,
     @SerializedName("show") val show: Boolean?
 ): Serializable

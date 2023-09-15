@@ -47,16 +47,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/listtxt" />
 
 
-            <ImageView
-                android:id="@+id/makenft_btn"
-                android:layout_width="51dp"
-                android:layout_height="44dp"
-                android:src="@drawable/ic_add"
-                app:layout_constraintBottom_toTopOf="@+id/listsourcetxt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/listtxt"
-                app:layout_constraintTop_toTopOf="@+id/listtxt" />
-
             <TextView
                 android:id="@+id/emptyView"
                 android:layout_width="wrap_content"
@@ -71,7 +61,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/listsourcetxt" />
 
+            <android.widget.Button
+                android:id="@+id/makenft_btn"
+                style="@style/NormalTextStyle"
+                android:layout_width="156dp"
+                android:layout_height="38dp"
+                android:background="@drawable/shape_blackblue"
+                android:text="NFT발행하기"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_mynftList" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
 
 </FrameLayout>

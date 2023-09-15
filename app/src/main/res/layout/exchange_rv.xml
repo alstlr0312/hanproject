@@ -30,7 +30,6 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="386dp"
                 android:layout_height="wrap_content"
-
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/rv_movieimg"

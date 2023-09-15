@@ -21,7 +21,7 @@ class SignUpFragment : Fragment() {
     val emailPattern = android.util.Patterns.EMAIL_ADDRESS
     val pwPattern = Pattern.compile("^(?=.*([a-z].*[A-Z])|([A-Z].*[a-z]))(?=.*[0-9])(?=.*[\$@\$!%*#?&.])[A-Za-z[0-9]\$@\$!%*#?&.]{8,20}\$")
     val checkArr = arrayListOf(false, false, false, false)
-
+    private var people = ""
     lateinit var dialog: LoadingDialog
 
     override fun onCreateView(
@@ -46,6 +46,7 @@ class SignUpFragment : Fragment() {
             viewModel.check(binding.edtEmail.text.toString())
         }
 
+
         binding.btnSignUp.setOnClickListener {
             val id = binding.edtId.text.toString()
             val pw = binding.edtPassword.text.toString()
@@ -53,8 +54,14 @@ class SignUpFragment : Fragment() {
             val email = binding.edtEmail.text.toString()
             val code = binding.edtAuthenticateCode.text.toString()
             val pwcheck = binding.edtPasswordConfirm.text.toString()
+            if(binding.customersignBtn.isChecked){
+                people="USER"
+            }else if(binding.directsignBtn.isChecked){
+                people="PUBLISHER"
+            }else{people=""}
+        //    viewModel.checkcode(code)
 
-            viewModel.signup(id, pw,pwcheck, email, name, code)
+            viewModel.signup(id, pw, pwcheck, email, name, people, code)
         }
 
         binding.btnBack.setOnClickListener {

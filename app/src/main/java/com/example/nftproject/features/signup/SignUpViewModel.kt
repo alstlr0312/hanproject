@@ -67,7 +67,36 @@ class SignUpViewModel : ViewModel() {
         })
     }
 
-    fun signup(id: String, password: String, passwordCheck: String, email: String, nickname: String, code: String) {
+    fun checkcode(code: String) {
+
+        _loading.postValue(SHOW_LOADING)
+        postCheckcode(code)
+    }
+
+    private fun postCheckcode(code: String) {
+        RetrofitClient.getApiService().emailCheck(code).enqueue(object : Callback<MyResponse<String>> {
+            override fun onResponse(call: Call<MyResponse<String>>, response: Response<MyResponse<String>>) {
+                _loading.postValue(DISMISS_LOADING)
+                val code = response.code()
+                if (code == 200) {
+                    _checkSuccess.postValue(true)
+                    _toastMessage.postValue(EMAIL_CODE_SEND_SUCCESS)
+                }else{
+                    val body = response.errorBody()?.string()
+                    val data = GsonBuilder().create().fromJson(body, Errordata::class.java)
+                    _toastMessage.postValue(data.error.toString())
+                }
+            }
+
+
+            override fun onFailure(call: Call<MyResponse<String>>, t: Throwable) {
+                Log.e(TAG, "Error: ${t.message}")
+                _loading.postValue(DISMISS_LOADING)
+            }
+        })
+    }
+
+    fun signup(id: String, password: String, passwordCheck: String, email: String, nickname: String,people:String, code: String) {
 
         _loading.postValue(SHOW_TEXT_LOADING)
 
@@ -101,7 +130,7 @@ class SignUpViewModel : ViewModel() {
             return
         }*/
 
-        RetrofitClient.getApiService().signup(code, SignUpRequest(id, password, nickname, email)).enqueue(object : Callback<MyResponse<String>> {
+        RetrofitClient.getApiService().signup(code, people, SignUpRequest(id, password, nickname, email)).enqueue(object : Callback<MyResponse<String>> {
             override fun onResponse(call: Call<MyResponse<String>>, response: Response<MyResponse<String>>) {
                 _loading.postValue(DISMISS_LOADING)
 

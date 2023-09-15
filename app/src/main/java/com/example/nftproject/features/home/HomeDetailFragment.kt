@@ -2,16 +2,19 @@ package com.example.nftproject.features.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentHomeDetailBinding
+import com.example.nftproject.makerfeatures.mhome.MhomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.unity.mynativeapp.config.DialogFragment
 
 
 class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHomeDetailBinding::bind, R.layout.fragment_home_detail)  {
     private val viewModel by viewModels<HomeViewModel>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val id = arguments?.getString("Id")?.toInt()
@@ -23,7 +26,17 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
         if(id != -1) id?.let { viewModel.getMovieDetail(it as Int) }
         subscribeUI()
         hideBottomNavigation(true)
+        setUiEvent(id)
     }
+
+    private fun setUiEvent(id: Int?) {
+        binding.buyBtn.setOnClickListener {
+            if (id != null) {
+                viewModel.getBuyNft(id)
+            }
+        }
+    }
+
     private fun subscribeUI() {
 
         viewModel.loading.observe(this) { isLoading ->
@@ -63,7 +76,7 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
                 binding.saledateTxt.text = data?.saleStartDate
                 binding.saleendTxt.text = data?.saleEndDate
                 binding.runningTimeTxt.text = data.runningTime.toString() + "분"
-                binding.sellBtn.text = data.normalNFTPrice.toString()+"원"
+                binding.buyBtn.text = data.normalNFTPrice.toString()+"원"
                 binding.directerTxt.text = data.director
                 binding.actorsTxt.text = data?.actors?.takeIf { it.isNotEmpty() }?.joinToString(", ") ?: ""
                 binding.filmRatingTxt.text = data.filmRating
@@ -72,7 +85,15 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
                 binding.createdAtTxt.text = data.createdAt.substring(2, 10)
             }
         }
+        viewModel.postBuyNftSuccess.observe(this) { data ->
+            Toast.makeText(requireContext(), "구매하셨습니다.", Toast.LENGTH_SHORT).show()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.homeFrame, HomeFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         hideBottomNavigation(false)

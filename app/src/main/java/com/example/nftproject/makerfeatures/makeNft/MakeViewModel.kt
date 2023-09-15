@@ -63,13 +63,12 @@ class MakeViewModel: ViewModel() {
                                 val body = response.errorBody()?.string()
                                 val data = GsonBuilder().create().fromJson(body, Errordata::class.java)
                                 Log.d(TAG, "$code  ${data.error.toString()}")
-                                //    _toastMessage.postValue(data.error?.get(0)?.error.toString())
                             }
                             else -> {
                                 val body = response.errorBody()?.string()
                                 val data = GsonBuilder().create().fromJson(body, Errordata::class.java)
-                                Log.d(TAG, "$code  ${data.error.toString()}")
-                                _toastMessage.postValue(data.error.toString())
+                                //Log.d(TAG, "$code  ${data.error.toString()}")
+                              //  _toastMessage.postValue(data.error.toString())
                                 if(code == 401) _logout.postValue(true)
 
                             }

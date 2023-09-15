@@ -32,6 +32,9 @@ class HomeViewModel: ViewModel() {
     private val _postDetailData = MutableLiveData<MovieDetailResponse?>()
     val postDetailData: LiveData<MovieDetailResponse?> = _postDetailData
 
+    private val _postBuyNftSuccess = MutableLiveData<Boolean>()
+    val postBuyNftSuccess: LiveData<Boolean> = _postBuyNftSuccess
+
     fun getMovie() {
         _loading.postValue(true)
         getMovieAPI()
@@ -108,6 +111,50 @@ class HomeViewModel: ViewModel() {
 
 
             override fun onFailure(call: Call<MyResponse<MovieDetailResponse>>, t: Throwable) {
+                Log.e(ContentValues.TAG, "Error: ${t.message}")
+                _loading.postValue(false)
+            }
+        })
+    }
+
+    //nft 구매
+    fun getBuyNft(num: Int) {
+
+        _loading.postValue(true)
+
+        getBuyNftAPI(num)
+    }
+
+    private fun getBuyNftAPI(num: Int) {
+        RetrofitClient.getApiService().buynft(num).enqueue(object :
+            Callback<MyResponse<String>> {
+            override fun onResponse(
+                call: Call<MyResponse<String>>,
+                response: Response<MyResponse<String>>
+            ) {
+                _loading.postValue(false)
+
+                val code = response.code()
+                when (code) {
+                    200 -> { // 게시글 상세 조회 성공
+                        val data = response.body()?.data
+                        Log.d(StateSet.TAG, data.toString())
+                        data?.let {
+                            _postBuyNftSuccess.postValue(true)
+                        }
+                    }
+                    401 -> _logout.postValue(true)
+                    400 -> {
+                        _postBuyNftSuccess.postValue(false)
+                    }
+                    else -> {
+                        Log.d(StateSet.TAG, "$code")
+                    }
+                }
+            }
+
+
+            override fun onFailure(call: Call<MyResponse<String>>, t: Throwable) {
                 Log.e(ContentValues.TAG, "Error: ${t.message}")
                 _loading.postValue(false)
             }

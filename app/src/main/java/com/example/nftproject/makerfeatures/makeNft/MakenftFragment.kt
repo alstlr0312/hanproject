@@ -5,12 +5,16 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.nftproject.MyApplication
+import com.example.nftproject.R
 import com.example.nftproject.databinding.FragmentMakenftBinding
+import com.example.nftproject.makerfeatures.mhome.MhomeFragment
 import com.example.nftproject.model.NftMakeRequest
 import com.example.nftproject.model.NftcountRequest
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -34,20 +38,51 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
     private var normalFile: File? = null
     private var rareFile: File? = null
     private var legendFile: File? = null
+    private var genreType: String? = null
+    private var ageType: String? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sortfilter()
         setUiEvent()
         setCalender()
         setImg()
+        subscribeUI()
         hideBottomNavigation(true)
     }
+    private fun sortfilter(){
+        // 게시물 필터 설정
+        binding.genreBtn.setOnClickListener {
+            val dialog = PostSortDialog(requireContext())
+            dialog.show()
+            dialog.setOnDismissListener {
+                if(dialog.resultCode == 1){
+                    var btnStr = ""
+                    btnStr =  btnStr + dialog.checkedCateText
+                    binding.genreText.text = Editable.Factory.getInstance().newEditable(btnStr)
+                    genreType = MyApplication.genrePartHashMap[dialog.checkedCateText]
 
+
+                    Log.d("장르",genreType.toString())
+                }
+            }
+        }
+
+        binding.ageBtn.setOnClickListener {
+            val dialog = PostageSortDialog(requireContext())
+            dialog.show()
+            dialog.setOnDismissListener {
+                if(dialog.resultCode == 1){
+                    var btnStr = ""
+                    btnStr =  btnStr + dialog.checkedCateText
+                    binding.ageText.text = Editable.Factory.getInstance().newEditable(btnStr)
+                    ageType = MyApplication.agePartHashMap[dialog.checkedCateText]
+
+                }
+            }
+        }
+    }
 
     private fun setCalender(){
-        val calendar = Calendar.getInstance()
-        val currentTime = calendar.time
-        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-        val formattedDate = dateFormat.format(currentTime)
         binding.setCalender.setOnClickListener {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -55,7 +90,7 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
             val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
             val listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-                val formattedDate = String.format("%04d-%02d-%02d $formattedDate", i, i2 + 1, i3)
+                val formattedDate = String.format("%04d-%02d-%02d ", i, i2 + 1, i3)
                 binding.opendayText.setText(formattedDate)
             }
 
@@ -72,7 +107,8 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
             val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
             val listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-                val formattedDate = String.format("%04d-%02d-%02d $formattedDate", i, i2 + 1, i3)
+                val formattedDate = String.format("%04d-%02d-%02d", i, i2 + 1, i3)
+                Log.d("날짜",formattedDate)
                 binding.saleStartTimeText.setText(formattedDate)
             }
 
@@ -89,7 +125,7 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
             val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
             val listener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
-                val formattedDate = String.format("%04d-%02d-%02d $formattedDate", i, i2 + 1, i3)
+                val formattedDate = String.format("%04d-%02d-%02d", i, i2 + 1, i3)
                 binding.saleEndTimeText.setText(formattedDate)
             }
 
@@ -165,7 +201,7 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
     private fun setUiEvent() {
         binding.publishBtn.setOnClickListener {
             val title = binding.titleText.text.toString()
-            val genre = binding.genreText.text.toString()
+            val genre = genreType
             val age = binding.ageText.text.toString()
             val openday = binding.opendayText.text.toString()
             val director = binding.direText.text.toString()
@@ -182,6 +218,7 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
                 0  // Default value if not a valid integer.
             }
             val selldate = binding.saleStartTimeText.text.toString()
+            Log.d("판매날짜",selldate)
             val selleddate = binding.saleStartTimeText.text.toString()
             val overview = binding.overviewText.text.toString()
             val show = true
@@ -194,8 +231,8 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
                 actors = actorArray.takeIf { it.isNotEmpty() },
                 runningTime = movietime.takeIf { it != null },
                 normalNFTPrice = normalprice.takeIf { it != null },
-                saleStartTime = selldate.takeIf { it !=" " },
-                saleEndTime  = selleddate.takeIf { it !=" " },
+                saleStartDate = selldate.takeIf { it !=" " },
+                saleEndDate  = selleddate.takeIf { it !=" " },
                 overView = overview.takeIf { it !=" " },
                 show = show
             )
@@ -252,8 +289,30 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
         hideBottomNavigation(false)
     }
     fun hideBottomNavigation(bool: Boolean) {
-        val bottomNavigation = activity!!.findViewById<BottomNavigationView>(com.example.nftproject.R.id.nav_dir_bar)
+        val bottomNavigation = activity!!.findViewById<BottomNavigationView>(R.id.nav_dir_bar)
         if (bool == true) bottomNavigation.visibility = View.GONE else bottomNavigation.visibility =
             View.VISIBLE
     }
+
+    private fun subscribeUI() {
+
+        viewModel.logout.observe(this) {
+            if (it) logout()
+        }
+
+        viewModel.toastMessage.observe(this) {
+            showCustomToast(it)
+        }
+
+        // 게시글 조회 성공
+        viewModel.postWriteSuccess.observe(this) { data ->
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.mhomeFrame, MhomeFragment())
+                transaction.addToBackStack(null)
+                transaction.commit()
+
+        }
+    }
+
+
 }

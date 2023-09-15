@@ -23,6 +23,7 @@ interface RetrofitService {
 	@POST("signup")
 	fun signup(
 		@Query("code") code: String,
+		@Query("role") role: String,
 		@Body signUpRequest: SignUpRequest
 	) : Call<MyResponse<String>>
 
@@ -42,10 +43,11 @@ interface RetrofitService {
 	@GET("/nft")
 	fun getmynft(
 		@Query("sortType") postType: String?,
-		@Query("publisherName") publisherName: String?,
+		@Query("username") username: String?,
 		@Query("page") page: Int?,
 		@Query("size") size: Int?
 	) : Call<MyResponse<GetMyNftResponse>>
+
 
 	// 내가 발행한 목록 상세 조회
 	@GET("/nft/detail/{num}")
@@ -55,7 +57,9 @@ interface RetrofitService {
 
 	//영화 목록 확인
 	@GET("/movie")
-	fun getmovie(): Call<MyResponse<GetMovieResponse>>
+	fun getmovie(
+	): Call<MyResponse<GetMovieResponse>>
+
 
 	// 영화 목록 상세 조회
 	@GET("/movie/detail/{num}")
@@ -63,5 +67,20 @@ interface RetrofitService {
 		@Path("num") num: Int
 	) : Call<MyResponse<MovieDetailResponse>>
 
+	//NFT구매
+	@POST("nft/buy/{num}")
+	fun buynft(
+		@Path("num") num: Int
+	) : Call<MyResponse<String>>
 
+	//NFT교환
+	@POST("nft/pick")
+	fun exnft(
+		@Part nftSerialnum1: Int,
+		@Part nftLevel1: String,
+		@Part nftSerialnum2: Int,
+		@Part nftLevel2: String,
+		@Part nftSerialnum3: Int,
+		@Part nftLevel3: String,
+	) : Call<MyResponse<exChangerResponse>>
 }

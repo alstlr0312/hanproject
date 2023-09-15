@@ -79,7 +79,7 @@
 
             <EditText
                 android:id="@+id/genre_text"
-                android:layout_width="370dp"
+                android:layout_width="320dp"
                 android:layout_height="35dp"
                 android:background="@drawable/shape_edge_gray"
                 android:ems="10"
@@ -107,7 +107,7 @@
 
             <EditText
                 android:id="@+id/age_text"
-                android:layout_width="370dp"
+                android:layout_width="320dp"
                 android:layout_height="35dp"
                 android:background="@drawable/shape_edge_gray"
                 android:ems="10"
@@ -120,6 +120,20 @@
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@+id/genre_text"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <android.widget.Button
+                android:id="@+id/age_btn"
+                style="@style/SmallTextStyle"
+                android:layout_width="54dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_blackblue"
+                android:text="연령"
+                android:textSize="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/age_text"
+                app:layout_constraintStart_toEndOf="@+id/age_text"
+                app:layout_constraintTop_toTopOf="@+id/age_text" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -151,7 +165,7 @@
                 app:layout_constraintStart_toStartOf="@+id/age_text"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/set_calender"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -305,7 +319,7 @@
                 app:layout_constraintStart_toStartOf="@+id/normal_price"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/sell_calender"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -346,7 +360,7 @@
                 app:layout_constraintStart_toStartOf="@+id/saleStartTime_text"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-            <Button
+            <android.widget.Button
                 android:id="@+id/sellend_calender"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
@@ -371,7 +385,7 @@
 
             <EditText
                 android:id="@+id/overview_text"
-                android:layout_width="320dp"
+                android:layout_width="0dp"
                 android:layout_height="272dp"
                 android:background="@drawable/shape_edge_gray"
                 android:gravity="top"
@@ -383,6 +397,7 @@
                 android:paddingVertical="12dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
+                app:layout_constraintEnd_toEndOf="@+id/normal_price"
                 app:layout_constraintStart_toStartOf="@+id/saleEndTime_text"
                 app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -416,6 +431,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/input_img"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="@+id/textView11"
                 app:layout_constraintStart_toStartOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
@@ -424,15 +440,17 @@
                 android:id="@+id/normal_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
                 android:src="@drawable/input_img"
                 app:layout_constraintEnd_toEndOf="@+id/textView12"
                 app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintTop_toTopOf="@+id/poster_img" />
 
             <ImageView
                 android:id="@+id/imageView8"
-                android:layout_width="113dp"
-                android:layout_height="22dp"
+                android:layout_width="94dp"
+                android:layout_height="14dp"
+                android:scaleType="centerCrop"
                 android:src="@drawable/normal_img"
                 app:layout_constraintEnd_toEndOf="@+id/normal_img"
                 app:layout_constraintStart_toStartOf="@+id/normal_img"
@@ -440,7 +458,7 @@
 
             <EditText
                 android:id="@+id/normal_quantity"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:background="@drawable/shape_edge_gray"
@@ -451,9 +469,9 @@
                 android:text=""
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                app:layout_constraintStart_toStartOf="@+id/imageView8"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/normal_img"
+                app:layout_constraintStart_toStartOf="@+id/normal_img"
                 app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
             <ImageView
@@ -462,6 +480,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/input_img"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="@+id/poster_img"
                 app:layout_constraintStart_toStartOf="@+id/poster_img"
                 app:layout_constraintTop_toBottomOf="@+id/normal_quantity" />
@@ -477,7 +496,7 @@
 
             <EditText
                 android:id="@+id/rare_quantity"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:background="@drawable/shape_edge_gray"
@@ -488,7 +507,7 @@
                 android:text=""
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/rare_img"
                 app:layout_constraintStart_toStartOf="@+id/rare_img"
                 app:layout_constraintTop_toBottomOf="@+id/imageView9" />
@@ -498,6 +517,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/input_img"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="@+id/normal_img"
                 app:layout_constraintStart_toStartOf="@+id/normal_img"
                 app:layout_constraintTop_toTopOf="@+id/rare_img" />
@@ -513,7 +533,7 @@
 
             <EditText
                 android:id="@+id/legend_quantity"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_alignParentStart="true"
                 android:background="@drawable/shape_edge_gray"
@@ -524,7 +544,7 @@
                 android:text=""
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/legend_img"
                 app:layout_constraintStart_toStartOf="@+id/legend_img"
                 app:layout_constraintTop_toBottomOf="@+id/imageView12" />
@@ -545,13 +565,28 @@
                 android:id="@+id/publish_btn"
                 android:layout_width="157dp"
                 android:layout_height="47dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/shape_blackblue"
                 android:text="발행하기"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/preview_btn"
-                app:layout_constraintTop_toTopOf="@+id/preview_btn" />
+                app:layout_constraintEnd_toEndOf="@+id/legend_quantity"
+                app:layout_constraintStart_toStartOf="@+id/legend_quantity"
+                app:layout_constraintTop_toBottomOf="@+id/legend_quantity" />
+
+            <android.widget.Button
+                android:id="@+id/genre_btn"
+                style="@style/SmallTextStyle"
+                android:layout_width="54dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/shape_blackblue"
+                android:text="장르"
+                android:textSize="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/genre_text"
+                app:layout_constraintStart_toEndOf="@+id/genre_text"
+                app:layout_constraintTop_toTopOf="@+id/genre_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </FrameLayout>

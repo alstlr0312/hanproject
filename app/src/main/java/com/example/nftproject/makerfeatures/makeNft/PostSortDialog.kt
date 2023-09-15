@@ -1,4 +1,4 @@
-package com.You.haveto.features.community
+package com.example.nftproject.makerfeatures.makeNft
 
 import android.app.Dialog
 import android.content.Context
@@ -6,41 +6,33 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.You.haveto.R
-import com.You.haveto.databinding.DialogPostSortBinding
-import com.You.haveto.databinding.ItemRvCheckboxBinding
+import com.example.nftproject.R
+import com.example.nftproject.databinding.DialogPostSortBinding
+import com.example.nftproject.databinding.ItemRvCheckboxBinding
 
 data class CbItem(
     val title: String,
     var isChecked: Boolean
 )
 class PostSortDialog(context: Context): Dialog(context) {
-
     val binding by lazy { DialogPostSortBinding.inflate(layoutInflater) }
-    //var sortCbList = arrayListOf<CheckBox>()    // 정렬 체크박스 리스트
-    //var categoryCbList = arrayListOf<CheckBox>()    // 카테고리 체크박스 리스트
-    lateinit var sortAdapter: CheckBoxAdapter
+
     lateinit var categoryAdapter: CheckBoxAdapter
     var resultCode = 0
-    var checkedSortText: String? = null
     var checkedCateText: String? = null
 
-    var sortTextList = listOf(R.string.total, R.string.q_and_a, R.string.knowledge_sharing,
-        R.string.show_off, R.string.assess, R.string.free)
-    var categoryTextList = listOf(R.string.total, R.string.health, R.string.pilates,
-        R.string.yoga, R.string.jogging, R.string.etc)
+    var genrelist = listOf(R.string.ACTION,R.string.ART,R.string.ANIMATION,R.string.ADVENTURE,R.string.COMEDY,R.string.CONCERT,R.string.CRIME,R.string.DISASTER,R.string.DOCUMENTARY,
+        R.string.DRAMA,R.string.EDUCATION,R.string.EXPERIMENT,R.string.EXPLOITATION,R.string.FANTASY,R.string.HORROR,R.string.MUMBLECORE,R.string.MUSICAL,R.string.MYSTERY,R.string.NARRATIVE,
+        R.string.NOIR,R.string.ROMANCE,R.string.SCIENCEFICTION,R.string.SPORT,R.string.SUPERHERO,R.string.THRILLER,R.string.WAR)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        sortAdapter = CheckBoxAdapter(setCbList(sortTextList))
+        categoryAdapter = CheckBoxAdapter(setCbList(genrelist))
         binding.rvSort.layoutManager = GridLayoutManager(context, 3)
-        binding.rvSort.adapter = sortAdapter
-
-        categoryAdapter = CheckBoxAdapter(setCbList(categoryTextList))
-        binding.rvCategory.layoutManager = GridLayoutManager(context, 3)
-        binding.rvCategory.adapter = categoryAdapter
+        binding.rvSort.adapter = categoryAdapter
 
         binding.btnCancel.setOnClickListener {
             resultCode = 0
@@ -48,7 +40,6 @@ class PostSortDialog(context: Context): Dialog(context) {
         }
         binding.btnApply.setOnClickListener {
             resultCode = 1
-            checkedSortText = sortAdapter.getCheckedText()
             checkedCateText = categoryAdapter.getCheckedText()
             dismiss()
         }
@@ -67,11 +58,7 @@ class PostSortDialog(context: Context): Dialog(context) {
         var list = mutableListOf<CbItem>()
 
         for(title in titleList){
-            if(title == R.string.total){
-                list.add(CbItem(context.getString(title), true))
-            }else{
                 list.add(CbItem(context.getString(title), false))
-            }
         }
         return list
     }
