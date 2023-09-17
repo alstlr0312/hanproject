@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="30dp"
     android:layout_margin="3dp">
 
     <TextView
         android:id="@+id/ntitle_list"
+        style="@style/SmallTextStyle"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:paddingHorizontal="9dp"
         android:text="인생은아름다워"
         android:textAlignment="center"
@@ -17,12 +20,11 @@
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/nnum_list"
         app:layout_constraintStart_toEndOf="@+id/nnum_list"
-        app:layout_constraintTop_toTopOf="@+id/nnum_list"
-        android:maxLines="1"
-        android:ellipsize="end" />
+        app:layout_constraintTop_toTopOf="@+id/nnum_list" />
 
     <TextView
         android:id="@+id/nday_list"
+        style="@style/SmallTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxLines="1"
@@ -31,49 +33,53 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/nnum_list"
         app:layout_constraintStart_toEndOf="@+id/nsell_list"
-        app:layout_constraintTop_toTopOf="@+id/ntitle_list" />
+        app:layout_constraintTop_toTopOf="@+id/nnum_list" />
 
     <TextView
         android:id="@+id/nsell_list"
+        style="@style/SmallTextStyle"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:paddingHorizontal="9dp"
         android:text="0"
-        android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/nday_list"
+        app:layout_constraintBottom_toBottomOf="@+id/nnum_list"
         app:layout_constraintStart_toEndOf="@+id/ntitle_list"
-        app:layout_constraintTop_toTopOf="@+id/nday_list" />
+        app:layout_constraintTop_toTopOf="@+id/nnum_list" />
 
     <TextView
         android:id="@+id/nnum_list"
+        style="@style/SmallTextStyle"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:paddingHorizontal="9dp"
         android:text="0"
-        android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ncost_list"
+        style="@style/SmallTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:paddingHorizontal="9dp"
         android:text="10000"
-        android:maxLines="1"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ntitle_list"
+        app:layout_constraintBottom_toBottomOf="@+id/nnum_list"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/nnum_list" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

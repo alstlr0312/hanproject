@@ -202,7 +202,7 @@ class MakenftFragment: DialogFragment<FragmentMakenftBinding>(FragmentMakenftBin
         binding.publishBtn.setOnClickListener {
             val title = binding.titleText.text.toString()
             val genre = genreType
-            val age = binding.ageText.text.toString()
+            val age = ageType
             val openday = binding.opendayText.text.toString()
             val director = binding.direText.text.toString()
             val actor = binding.actorText.text.toString()
