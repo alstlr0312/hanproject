@@ -49,9 +49,11 @@
                 <TextView
                     android:id="@+id/rv_title"
                     style="@style/NormalTextStyle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="95dp"
+                    android:layout_height="23dp"
                     android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="영화명"
                     android:textAlignment="center"
                     android:textColor="#221F80"

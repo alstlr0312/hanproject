@@ -82,8 +82,8 @@ class HomeDetailFragment: DialogFragment<FragmentHomeDetailBinding>(FragmentHome
                     binding.rareDegree.visibility = View.INVISIBLE
                     binding.legendDegree.visibility = View.VISIBLE
                 }
-                binding.saledateTxt.text = data?.saleStartDate
-                binding.saleendTxt.text = data?.saleEndDate
+               // binding.saledateTxt.text = data?.saleStartDate
+                //binding.saleendTxt.text = data?.saleEndDate
                 binding.runningTimeTxt.text = data.runningTime.toString() + "분"
                 binding.buyBtn.text = data.normalNFTPrice.toString()+"원"
                 binding.directerTxt.text = data.director

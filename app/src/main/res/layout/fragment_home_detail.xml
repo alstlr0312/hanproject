@@ -49,6 +49,7 @@
                 android:id="@+id/bar2"
                 android:layout_width="wrap_content"
                 android:layout_height="3dp"
+                android:layout_marginTop="8dp"
                 android:background="#6FACACAC"
                 android:backgroundTint="#C8DDDDDD"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,17 +60,19 @@
                 android:id="@+id/bar3"
                 android:layout_width="wrap_content"
                 android:layout_height="3dp"
+                android:layout_marginTop="8dp"
                 android:background="#6FACACAC"
                 android:backgroundTint="#C8DDDDDD"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/buy_btn" />
 
             <TextView
                 android:id="@+id/title_txt"
                 style="@style/TitleTextStyle"
-                android:layout_width="130dp"
+                android:layout_width="0dp"
                 android:layout_height="33dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/movie_title"
                 android:textAlignment="center"
                 android:textColor="#000000"
@@ -83,6 +86,7 @@
                 android:id="@+id/rare_degree"
                 android:layout_width="88dp"
                 android:layout_height="35dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/rare_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -92,6 +96,7 @@
                 android:id="@+id/legend_degree"
                 android:layout_width="129dp"
                 android:layout_height="38dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/legend_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,6 +106,7 @@
                 android:id="@+id/normal_degree"
                 android:layout_width="123dp"
                 android:layout_height="33dp"
+                android:layout_marginTop="16dp"
                 android:src="@drawable/normal_img"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -113,73 +119,23 @@
                 android:layout_height="wrap_content"
                 android:text="@string/publisher"
                 android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/normal_degree"
+                app:layout_constraintBottom_toBottomOf="@+id/rare_degree"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.807"
                 app:layout_constraintStart_toEndOf="@+id/legend_degree"
-                app:layout_constraintTop_toBottomOf="@+id/title_txt"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/textView14"
-                style="@style/NormalTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="발행일"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/bar2" />
-
-            <TextView
-                android:id="@+id/textView15"
-                style="@style/NormalTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="발행종료"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
-
-            <TextView
-                android:id="@+id/saledate_txt"
-                style="@style/NormalTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="2023-09-07"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/textView14"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
-                app:layout_constraintTop_toTopOf="@+id/textView14"
-                app:layout_constraintVertical_bias="1.0" />
-
-            <TextView
-                android:id="@+id/saleend_txt"
-                style="@style/NormalTextStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2023-10-01"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/textView15"
-                app:layout_constraintStart_toStartOf="@+id/saledate_txt"
-                app:layout_constraintTop_toTopOf="@+id/textView15" />
+                app:layout_constraintTop_toTopOf="@+id/rare_degree" />
 
             <android.widget.Button
                 android:id="@+id/buy_btn"
                 style="@style/NormalTextStyle"
                 android:layout_width="156dp"
                 android:layout_height="38dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
                 android:background="@drawable/shape_blackblue"
                 android:text="15000원"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/saleend_txt"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bar2" />
 
             <TextView
@@ -187,11 +143,12 @@
                 style="@style/NormalTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="감독명"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bar3" />
 
             <TextView
@@ -199,10 +156,11 @@
                 style="@style/NormalTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:text="봉준호"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="@+id/textview33"
-                app:layout_constraintStart_toStartOf="@+id/saleend_txt"
+                app:layout_constraintStart_toEndOf="@+id/textview33"
                 app:layout_constraintTop_toTopOf="@+id/textview33" />
 
             <TextView

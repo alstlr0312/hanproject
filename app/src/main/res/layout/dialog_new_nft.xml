@@ -5,19 +5,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
-    android:background="@color/main_gray_light">
+    android:background="@drawable/shape_dialog">
 
     <TextView
         android:id="@+id/tv_title"
         style="@style/BigTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="!!축하합니다!!"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/sortLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,23 +33,37 @@
         android:gravity="center_vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
-
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_apply"
+        style="@style/SmallTextStyle"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/shape_blackblue"
         android:text="확인"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newnft_level" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_qr"
+        style="@style/SmallTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:background="@drawable/shape_blackblue"
+        android:text="예매하기"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_apply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_apply"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/newnft_img"
@@ -62,11 +78,12 @@
 
     <TextView
         android:id="@+id/newnft_title"
-        style="@style/NormalTextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/BigTextStyle"
+        android:layout_width="369dp"
+        android:layout_height="54dp"
         android:layout_marginTop="8dp"
         android:text="제목"
+        android:textAlignment="center"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,11 +93,25 @@
         android:id="@+id/newnft_level"
         android:layout_width="179dp"
         android:layout_height="57dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newnft_title"
         app:srcCompat="@drawable/legend_img" />
+
+    <ImageView
+        android:id="@+id/tiket_qr"
+        android:layout_width="333dp"
+        android:layout_height="436dp"
+        android:layout_marginTop="32dp"
+        android:rotation="180"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:srcCompat="@drawable/qrcode_img" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
