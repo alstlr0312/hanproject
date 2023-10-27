@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = https://github.com/alstlr0312/hanproject.git
+[remote "gitlab"]
+	url = https://lab.hanium.or.kr/23_HF248/23_hf248_android.git
+	fetch = +refs/heads/*:refs/remotes/gitlab/*

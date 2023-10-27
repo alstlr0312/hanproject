@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nftproject.network.Errordata
 import com.example.nftproject.network.MyResponse
+import com.example.nftproject.network.util.NFT_COMPLETE
 import com.example.nftproject.network.util.POST_WRITE_COMPLETE
 import com.google.gson.GsonBuilder
 import com.unity.mynativeapp.config.DialogActivity.Companion.DISMISS_LOADING
@@ -56,7 +57,7 @@ class MakeViewModel: ViewModel() {
                         when(code) {
                             201 -> { // 게시글 작성 성공
                                 val data = response.body()?.data
-                                _toastMessage.postValue(POST_WRITE_COMPLETE)
+                                _toastMessage.postValue(NFT_COMPLETE)
                                 _postWriteSuccess.postValue(true)
                             }
                             400 -> {

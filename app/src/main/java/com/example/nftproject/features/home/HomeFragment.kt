@@ -30,7 +30,7 @@ class HomeFragment: DialogFragment<FragmentHomeBinding>(FragmentHomeBinding::bin
     private fun setView() {
         hAdapter = HomeFraAdapter(requireContext())
         binding.rvPostList.adapter = hAdapter
-        val  layoutManager = GridLayoutManager(requireContext(), 2)
+        val layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvPostList.layoutManager = layoutManager
         viewModel.getMovie()
     }

@@ -15,7 +15,6 @@ import com.example.nftproject.model.nftListItem
 
 class MhomeAdaptor(private val context: Context) : RecyclerView.Adapter<MhomeAdaptor.ViewHolder>() {
     var itemList = mutableListOf<nftListItem>()
-    private var counter = 0
     private var listener : OnItemClickListener? = null
     inner class ViewHolder(val binding: MakerLsitRvBinding): RecyclerView.ViewHolder(binding.root),
         View.OnClickListener {
@@ -23,7 +22,8 @@ class MhomeAdaptor(private val context: Context) : RecyclerView.Adapter<MhomeAda
             itemView.setOnClickListener(this)
         }
         fun bind(item: nftListItem){
-            counter++
+            val itemCount = itemList.size
+            val counter = itemCount - adapterPosition
             binding.nnumList.text = counter.toString()
             binding.ntitleList.text = item.movieTitle
             binding.nsellList.text = item.nftPrice.toString()

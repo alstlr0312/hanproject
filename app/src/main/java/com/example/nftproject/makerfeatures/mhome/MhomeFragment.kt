@@ -20,7 +20,7 @@ class MhomeFragment: DialogFragment<FragmentMhomeBinding>(FragmentMhomeBinding::
     private var getPostHasNext = false
     private var getPostIsFirst = true
     private var currentPage = 0
-    private val pageSize = 20
+    private val pageSize = 60
     private lateinit var publisherName: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

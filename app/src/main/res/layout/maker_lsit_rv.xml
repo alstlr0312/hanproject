@@ -55,8 +55,8 @@
     <TextView
         android:id="@+id/nnum_list"
         style="@style/SmallTextStyle"
-        android:layout_width="30dp"
-        android:layout_height="wrap_content"
+        android:layout_width="35dp"
+        android:layout_height="17dp"
         android:maxLines="1"
         android:paddingHorizontal="9dp"
         android:text="0"

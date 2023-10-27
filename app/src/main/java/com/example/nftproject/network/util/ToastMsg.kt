@@ -23,7 +23,7 @@ const val EMAIL_CODE_SEND_SUCCESS = "입력된 이메일로 인증코드를 발�
 const val EMAIL_CODE_SAME_ERROR = "잘못된 인증코드 입니다."
 const val EMAIL_DUPLICATE_ERROR = "이미 존재하는 이메일입니다."
 
-const val SAVE_COMPLETE = "저장되었습니다."
+const val NFT_COMPLETE = "NFT가 발급되었습니다."
 const val EDIT_COMPLETE = "수정되었습니다."
 const val DELETE_COMPLETE = "삭제되었습니다."
 const val POST_WRITE_COMPLETE = "게시글이 작성되었습니다."
