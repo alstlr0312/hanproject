@@ -1,92 +1,64 @@
-# 23_HF248_Android
+## 작품 개요
+블록체인 기반 NFT 영화 티켓 발급 및 거래 플랫폼
+## 개발 배경
+현재 점점 힘들어져가는 국내 독립영화에 미약한 도움을 주고자 수익 및 고정고객을 확보하는 방법으로 NFT 티켓 발행을 통한 수익창출 및 제작비 투자 유치를 가능하게 하는 거래 플랫폼을 제안하고자 한다.
+## 주요 기능
+NFT 영화 티켓 발급 - 영화의 상징성 있는 포스터나 사진을 NFT 티켓으로 발급하고 해당 티켓을 발급받은 사람에게 보상을 제공한다.
+NFT 영화 티켓을 이용한 상위 NFT 랜덤 교환 - 일정 NFT를 소모해 더 희귀한 NFT를 랜덤하게 얻을 수 있다.
+영화 제작 투자 - 제작 중인 영화 NFT 티켓을 사전 발행하여 제작비 투자를 받을 수 있는 기회를 제공한다.
+## 활용 분야
+- 영화 굿즈의 마케팅 및 판매
+- 다양한 방식의 관람 서비스 확대
+- 뮤지컬, 연극, 스포츠 등 다양한 관람 문화에 적용 가능
 
 
+## 동작 화면
+### 📌로그인  
+<img src="https://github.com/10000DOO/YouHaveTo/assets/57493546/2b57e197-320c-499b-92cd-48da6ecf43d9" width="200">
 
-## Getting started
+### 📌다이어리
+<img src="https://github.com/10000DOO/YouHaveTo/assets/57493546/2ef8e3e7-b896-4cae-9d58-635e5adb537f" width="200">
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### 📌운동 커뮤니티
+<img src="https://github.com/10000DOO/YouHaveTo/assets/57493546/412b2329-50c4-4f0a-98dd-8b5af1e8b947" width="200">
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+### 📌AR
+<img src="https://github.com/10000DOO/YouHaveTo/assets/57493546/51653526-9e32-42af-975a-3ece3ad8950d" width="200">
+<img src="[https://github.com/10000DOO/YouHaveTo/assets/57493546/51653526-9e32-42af-975a-3ece3ad8950d](https://private-user-images.githubusercontent.com/57493546/293569592-5326b088-767c-4083-97cc-56f9ba4c6df3.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjc1ODQ5ODYsIm5iZiI6MTcyNzU4NDY4NiwicGF0aCI6Ii81NzQ5MzU0Ni8yOTM1Njk1OTItNTMyNmIwODgtNzY3Yy00MDgzLTk3Y2MtNTZmOWJhNGM2ZGYzLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA5MjklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwOTI5VDA0MzgwNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBmY2E5OTAwYzU4NjM3MmIwMjZlMjRhMGYyYzYzMzBjMzNjZjA4MzU4Nzc5NDgwMTBiMTA4MmZhYTkwMzlhZWEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.94any0y-L0YY63CV-vjdIfxtmZi6-OtraN-yDVCQwms)" width="200">
+<img src="https://github.com/10000DOO/YouHaveTo/assets/57493546/516a690f-aae5-45b6-91dd-03e254d86ab0" width="200">
+<img src="https://github.com/10000DOO/YouHaveTo/assets/57493546/e42ec104-5716-4dd9-9f60-bd3f128f7f8c" width="200">
 
-## Add your files
+## Environment
+- 프레임워크 : SpringBoot  
+- 주요 라이브러리 : Spring Security, SpringData JPA, spring-boot-starter-mail, Querydsl, jjwt  
+- 외부 API : 서울 열린데이터 광장  
+- 개발 언어 : JAVA   
+- 개발 환경 : Mac OS, Rocky Linux  
+- 개발 도구 : IntelliJ, Jenkins, Docker, Nginx  
+- 테스트 : Mockito, JUnit5  
+- 데이터 베이스 : Postgresql  
+- 협업 : Notion, Slack, trello  
+## 안드로이드
+- 주요 라이브러리 : Vuforia  
+- 외부 API : 네이버 지도  
+- 개발 언어 : Kotlin, C#
+- 개발 환경 : Window, Android   
+- 개발 도구 : Android Studio, Unity  
+- 협업 : Notion, Slack, Trello
+- 
+## 구조
+<p align="center"><img src="https://user-images.githubusercontent.com/57493546/237001396-3e01c550-f99d-4b7d-86ac-e00a587139a8.png" alt="구조도"></p>
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+# Reference
+서버 GitHub : https://github.com/10000DOO/YouHaveTo
+API 문서 : https://documenter.getpostman.com/view/18513911/2s935oLPKm  
+## 팀 소개
+### 팀명 : 헬짱
+### 팀원
+이건준 : https://github.com/10000DOO  
+김민식 : https://github.com/alstlr0312  
+이예림 : https://github.com/yerim425  
+정윤주 : https://github.com/YJMINT  
 
-```
-cd existing_repo
-git remote add origin https://lab.hanium.or.kr/23_HF248/23_hf248_android.git
-git branch -M main
-git push -uf origin main
-```
+다운로드 링크: https://drive.google.com/file/d/1pHKzfCYyIMou03O4gGjw-GcOyIroeVHH/view?usp=drive_link
 
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://lab.hanium.or.kr/23_HF248/23_hf248_android/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
