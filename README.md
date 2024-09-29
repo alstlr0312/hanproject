@@ -14,7 +14,7 @@ NFT 영화 티켓을 이용한 상위 NFT 랜덤 교환 - 일정 NFT를 소모�
 
 ## 동작 화면
 ### 📌로그인  
-<img src="https://github.com/alstlr0312/hanproject/blob/main/NFT_UI.png" width="200">
+<img src="https://github.com/alstlr0312/hanproject/blob/main/NFT_UI.png" width="500">
 
 
 ## 구조
